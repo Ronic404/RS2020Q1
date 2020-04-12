@@ -5,8 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "dev": "webpack --watch --mode development",
-    "prod": "webpack --watch --mode production",
-    "start:dev": "webpack-dev-server"
+    "prod": "webpack --mode production",
+    "start:dev": "webpack-dev-server",
+    "css": "sass --watch ./src/css/style.scss ./src/style.css"
   },
   "repository": {
     "type": "git",
