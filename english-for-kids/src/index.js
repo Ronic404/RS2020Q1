@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable import/extensions */
 import cards from './js/cards.js';
 
 const BURGER = document.querySelector('.burger-menu');
@@ -7,8 +9,6 @@ BURGER.addEventListener('click', () => {
   document.querySelector('.burger-menu__line').classList.toggle('burger-menu__line_active');
   document.querySelector('.menu').classList.toggle('menu_active');
 });
-
-
 
 const createMainPageList = () => {
   document.querySelector('.main-page__list').innerText = '';
@@ -52,9 +52,22 @@ const createCardsPageList = () => {
     p.innerText = cards[pageNumber][i].word;
     cardsPageItem.append(p);
 
+    const p2 = document.createElement('p');
+    p2.className = 'cards-page__item-name cards-page__item-name_translate none';
+    p2.innerText = cards[pageNumber][i].translation;
+    cardsPageItem.append(p2);
+
     const rotate = document.createElement('div');
     rotate.className = 'rotate';
     cardsPageItem.append(rotate);
+
+    const audio = document.createElement('audio');
+    audio.className = 'audio';
+    audio.setAttribute('src', cards[pageNumber][i].audioSrc);
+    audio.setAttribute('preload', 'auto');
+    cardsPageItem.append(audio);
+
+    playAudio();
   }
 };
 
@@ -85,11 +98,26 @@ const translateCards = () => {
     item.addEventListener('click', (event) => {
       if (event.target.classList.contains('rotate')) {
         item.classList.add('translate');
+        item.querySelector('.cards-page__item-name').classList.add('none');
+        item.querySelector('.cards-page__item-name_translate').classList.remove('none');
       }
     });
 
-    item.addEventListener('mouseout', () => {
+    item.addEventListener('mouseleave', () => {
       item.classList.remove('translate');
+      item.querySelector('.cards-page__item-name').classList.remove('none');
+      item.querySelector('.cards-page__item-name_translate').classList.add('none');
+    });
+  });
+};
+
+const playAudio = () => {
+  document.querySelectorAll('.cards-page__item').forEach((item) => {
+    item.addEventListener('click', () => {
+      item.querySelector('.audio').setAttribute('autoplay', '');
+      setTimeout(() => {
+        item.querySelector('.audio').removeAttribute('autoplay', '');
+      }, 1500);
     });
   });
 };

@@ -1,0 +1,35 @@
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  background-color: $menu-color;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  white-space: nowrap;
+  z-index: 5;
+  &_active {
+    width: 320px;
+  }
+}
+
+.menu__list {
+  height: 100%;
+  margin: 0 0 0 30px;
+  list-style: none;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu__item {
+  font-size: 3rem;
+  margin: 3px 0;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+  }
+}
