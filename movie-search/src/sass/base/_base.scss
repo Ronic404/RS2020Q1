@@ -1,0 +1,22 @@
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  background-image: linear-gradient(to right, #53755d, #d2c5c5);
+}

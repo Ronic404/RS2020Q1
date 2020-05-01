@@ -1,0 +1,18 @@
+.slider-block {
+  height: 70vh;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  align-items: center;
+  height: 100%;
+}
+
+.slider__item {
+  flex-basis: 20%;
+  height: 400px;
+  background-color: brown;
+  border: 3px solid chocolate;
+}

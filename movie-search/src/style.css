@@ -1,0 +1,129 @@
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  background-image: linear-gradient(to right, #53755d, #d2c5c5);
+}
+
+header {
+  background-color: #493b86;
+  height: 10vh;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.header__title {
+  color: white;
+  font-size: 4rem;
+}
+
+.search-block {
+  height: 10vh;
+  display: flex;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+input[type=search] {
+  padding-left: 10px;
+  margin-right: 10px;
+  flex-grow: 1;
+  height: 40px;
+  font-size: 2rem;
+  outline-color: #493b86;
+  color: #493b86;
+}
+input[type=search]::-webkit-search-cancel-button {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button {
+  height: 40px;
+  padding: 0 10px;
+  font-size: 2rem;
+  background-color: #c30c0c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:active {
+  background-color: red;
+}
+button:focus {
+  outline: none;
+}
+button:hover {
+  transform: translate(5px, 5px);
+  box-shadow: -5px -5px 5px 1px #ce5353;
+}
+
+.slider-block {
+  height: 70vh;
+}
+
+.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  align-items: center;
+  height: 100%;
+}
+
+.slider__item {
+  flex-basis: 20%;
+  height: 400px;
+  background-color: brown;
+  border: 3px solid chocolate;
+}
+
+footer {
+  background-color: #493b86;
+  height: 10vh;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.footer-github {
+  display: flex;
+}
+
+.footer-github__icon {
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
