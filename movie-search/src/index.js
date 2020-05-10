@@ -3,7 +3,7 @@ import {
   Swiper, Navigation, Pagination, Scrollbar,
 } from '../node_modules/swiper/js/swiper.esm.js';
 
-import translate from './js/translate.js';
+import translate, { TRANSLATE_WORD } from './js/translate.js';
 
 Swiper.use([Navigation, Pagination, Scrollbar]);
 
@@ -54,9 +54,11 @@ const swiper = new Swiper('.swiper-container', {
 });
 
 function getMovieTitle() {
-  const MOVIE_SEARCH_VALUE = document.querySelector('#search').value || 'hard die';
+  let MOVIE_SEARCH_VALUE = MOVIE_SEARCH.value || 'hard die';
   if (MOVIE_SEARCH_VALUE.match(/[ёйцукенгшщзхъфывапролджэячсмитьбю]/i)) {
     translate();
+    MOVIE_SEARCH_VALUE = String(TRANSLATE_WORD);
+    global.console.log(MOVIE_SEARCH_VALUE);
   } else {
     const URL = `https://www.omdbapi.com/?s=${MOVIE_SEARCH_VALUE}&apikey=${API_KEY}`;
     fetch(URL)
