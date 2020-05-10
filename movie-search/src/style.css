@@ -8,7 +8,7 @@ html {
 }
 
 .wrapper {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -84,6 +84,12 @@ button:hover {
   transform: translate(5px, 5px);
   box-shadow: -5px -5px 5px 1px #ce5353;
 }
+@media screen and (max-width: 400px) {
+  button {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+}
 
 .swiper-scrollbar {
   opacity: 0;
@@ -93,6 +99,11 @@ button:hover {
   height: 70vh;
   padding-bottom: 40px;
   box-sizing: border-box;
+}
+@media screen and (max-width: 460px) {
+  .swiper-container {
+    padding-bottom: 10px;
+  }
 }
 
 .swiper-slide {
@@ -105,6 +116,13 @@ button:hover {
 .slide-title {
   font-size: 2rem;
   margin: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  text-decoration: underline;
+  color: #e2e4d7;
+  text-shadow: 2px 0px 5px black;
 }
 
 .slide-poster {
@@ -119,6 +137,12 @@ button:hover {
 .slide-rating {
   font-size: 1.5rem;
   margin-bottom: 10px;
+}
+@media screen and (max-width: 460px) {
+  .slide-year,
+.slide-rating {
+    padding-bottom: 0px;
+  }
 }
 
 .slide-rating {

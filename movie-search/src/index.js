@@ -3,35 +3,36 @@ import {
   Swiper, Navigation, Pagination, Scrollbar,
 } from '../node_modules/swiper/js/swiper.esm.js';
 
-import createSlide from './js/createSlide.js';
+import translate from './js/translate.js';
 
 Swiper.use([Navigation, Pagination, Scrollbar]);
 
 const BUTTON = document.querySelector('#button');
 const MOVIE_SEARCH = document.querySelector('#search');
-const SWIPER_WRAPPER = document.querySelector('.swiper-wrapper');
 const API_KEY = '646a227e';
-const MOVIE_TITLE = document.querySelector('.slide-title');
-const MOVIE_POSTER = document.querySelector('.slide-poster');
-const MOVIE_YEAR = document.querySelector('.slide-year');
+const MOVIE_TITLE = document.querySelectorAll('.slide-title');
+const MOVIE_POSTER = document.querySelectorAll('.slide-poster');
+const MOVIE_YEAR = document.querySelectorAll('.slide-year');
 const MOVIE_RATING = document.querySelector('.slide-rating');
 let imdbID = '';
 
 const swiper = new Swiper('.swiper-container', {
   direction: 'horizontal',
-  loop: true,
-  spaceBetween: 40,
-  slidesPerView: 4,
+  loop: false,
   breakpoints: {
     320: {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    460: {
       slidesPerView: 2,
       spaceBetween: 20,
     },
-    480: {
+    600: {
       slidesPerView: 3,
       spaceBetween: 30,
     },
-    640: {
+    900: {
       slidesPerView: 4,
       spaceBetween: 40,
     },
@@ -53,17 +54,27 @@ const swiper = new Swiper('.swiper-container', {
 });
 
 function getMovieTitle() {
-  const MOVIE_SEARCH_VALUE = document.querySelector('#search').value;
-  const URL = `https://www.omdbapi.com/?s=${MOVIE_SEARCH_VALUE}&apikey=${API_KEY}`;
-  return fetch(URL)
-    .then((response) => response.json())
-    .then((data) => {
-      MOVIE_TITLE.innerText = data.Search[0].Title;
-      MOVIE_POSTER.style.backgroundImage = `url(${data.Search[0].Poster})`;
-      MOVIE_YEAR.innerText = data.Search[0].Year;
-      imdbID = data.Search[0].imdbID;
-    })
-    .catch(() => alert('Нет такого фильма'));
+  const MOVIE_SEARCH_VALUE = document.querySelector('#search').value || 'hard die';
+  if (MOVIE_SEARCH_VALUE.match(/[ёйцукенгшщзхъфывапролджэячсмитьбю]/i)) {
+    translate();
+  } else {
+    const URL = `https://www.omdbapi.com/?s=${MOVIE_SEARCH_VALUE}&apikey=${API_KEY}`;
+    fetch(URL)
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.Search) {
+          global.alert(`No results for: ${MOVIE_SEARCH_VALUE}`);
+        } else {
+          for (let i = 0; i < data.Search.length; i += 1) {
+            MOVIE_TITLE[i].innerText = data.Search[i].Title;
+            MOVIE_POSTER[i].style.backgroundImage = `url(${data.Search[i].Poster})`;
+            MOVIE_YEAR[i].innerText = data.Search[i].Year;
+            imdbID = data.Search[i].imdbID;
+            MOVIE_TITLE[i].setAttribute('href', `https://www.imdb.com/title/${imdbID}/?ref_=fn_al_tt_1`);
+          }
+        }
+      });
+  }
 }
 
 function getMovieRating() {
@@ -89,4 +100,5 @@ BUTTON.addEventListener('click', () => {
 });
 
 swiper.init();
-createSwiper();
+getMovieTitle();
+getMovieRating();
