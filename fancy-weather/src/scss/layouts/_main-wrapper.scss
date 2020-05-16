@@ -1,0 +1,113 @@
+.main-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 57px;
+}
+
+.forecast {
+  width: 50%;
+}
+
+.title__city {
+  width: 100%;
+  font-weight: bold;
+  font-size: 4.4rem;
+  line-height: 5.4rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title__date {
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 2.9rem;
+}
+
+.today {
+  display: flex;
+  position: relative;
+}
+
+.today__temperature {
+  position: relative;
+  font-weight: bold;
+  font-size: 30rem;
+  line-height: 37rem;
+  text-transform: uppercase;
+    &::after {
+      content: '°';
+      font-weight: bold;
+      font-size: 16rem;
+      text-transform: uppercase;
+      position: absolute;
+      top: -50px;
+    }
+}
+
+.today__description {
+  position: absolute;
+  width: 30%;
+  font-size: 2.2rem;
+  line-height: 3.7rem;
+  text-transform: uppercase;
+  right: 0;
+  top: 150px;
+}
+
+.today__image {
+  position: absolute;
+  width: 160px;
+  height: 100px;
+  left: 300px;
+}
+
+.days-list {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 90px;
+}
+
+.day {
+  position: relative;
+}
+
+.day__title {
+  font-weight: bold;
+  font-size: 2.2rem;
+  line-height: 2.7rem;
+  text-transform: uppercase;
+}
+
+.day__temperature {
+  font-weight: 600;
+  font-size: 8rem;
+  line-height: 9.8rem;
+  text-transform: uppercase;
+}
+
+.day__image {
+  position: absolute;
+  top: 35px;
+  right: -60px;
+}
+
+.map {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.map__image {
+  width: 100%;
+}
+
+.geo-coordinates {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: right;
+  text-transform: capitalize;
+}

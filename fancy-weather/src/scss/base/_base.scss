@@ -1,0 +1,24 @@
+html {
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  background-color: black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 57px;
+}

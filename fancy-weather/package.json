@@ -1,0 +1,15 @@
+{
+  "name": "fancy-weather",
+  "version": "1.0.0",
+  "description": "fancy-weather",
+  "main": "index.js",
+  "scripts": {
+    "scss": "sass --watch ./src/scss/main.scss ./src/style.css"
+  },
+  "keywords": [],
+  "author": "ROnic404",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.26.5"
+  }
+}

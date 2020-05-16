@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="./src/img/favicon.ico" rel="icon" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <header class="wrapper">
+    <div class="settings-block">
+      <div class="settings-block__refresh">
+        <img src="./src/img/header/refresh.svg" alt="">
+      </div>
+      <div class="settings-block__lang">
+        <ul>
+          <p>EN</p>
+          <li>EN</li>
+          <li>RU</li>
+          <li>BE</li>
+        </ul>
+      </div>
+      <div class="settings-block__fc">
+          <div class="settings-block__fahrenheit">°F</div>
+          <div class="settings-block__celsius">°C</div>
+      </div>
+    </div>
+
+    <div class="search-block">
+      <form action="#" method="GET" class="search-block__form">
+        <input type="text" name="city" id="city" placeholder="Search city or ZIP" autofocus>
+        <button type="button" id="search">Search</button>
+      </form>
+    </div>
+  </header>
+
+
+
+  <main class="wrapper main-wrapper">
+    <section class="forecast">
+      <div class="title">
+        <h1 class="title__city">Minsk, Belarus</h1>
+        <h3 class="title__date"> aasdfdf DF  23</h3>
+      </div>
+
+      <div class="today">
+        <div class="today__temperature">10</div>
+        <div class="today__description">safdfasf</div>
+        <img class="today__image" src="./src/img/header/refresh-bg.png" alt="">
+      </div>
+
+      <div class="days">
+        <ul class="days-list">
+          <li class="day day-1">
+            <div class="day__title">asdasd</div>
+            <div class="day__temperature">7°</div>
+            <img class="day__image" src="./src/img/header/refresh-bg.png" alt="">
+          </li>
+          <li class="day day-2">
+            <div class="day__title">asdasd</div>
+            <div class="day__temperature">18°</div>
+            <img class="day__image" src="./src/img/header/refresh-bg.png" alt="">
+          </li>
+          <li class="day day-3">
+            <div class="day__title">asdasd</div>
+            <div class="day__temperature">-5°</div>
+            <img class="day__image" src="./src/img/header/refresh-bg.png" alt="">
+          </li>          
+        </ul>
+      </div>
+    </section>
+
+    <section class="map">
+      <img class="map__image" src="./src/img/header/refresh-bg.png" alt="">
+      <div class="geo-coordinates">
+        <p class="geo-coordinates__latitude">ewtrt</p>
+        <p class="geo-coordinates__longitude">wertwert</p>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
