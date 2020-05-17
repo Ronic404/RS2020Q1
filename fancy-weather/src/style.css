@@ -13,6 +13,13 @@ html {
   text-decoration: none;
 }
 
+body {
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -119,6 +126,8 @@ header {
 
 .forecast {
   width: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 2%;
 }
 
 .title__city {
@@ -215,6 +224,9 @@ header {
 
 .map__image {
   width: 100%;
+  height: 85%;
+  border-radius: 4%;
+  overflow: hidden;
 }
 
 .geo-coordinates {
