@@ -87,6 +87,13 @@
   font-size: 8rem;
   line-height: 9.8rem;
   text-transform: uppercase;
+    &::after {
+      content: '°';
+      font-weight: bold;
+      text-transform: uppercase;
+      position: absolute;
+      top: +25px;
+    }
 }
 
 .day__image {

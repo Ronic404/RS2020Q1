@@ -30,7 +30,7 @@
 
     <div class="search-block">
       <form action="#" method="GET" class="search-block__form">
-        <input type="text" name="city" id="city" placeholder="Search city or ZIP" autofocus>
+        <input type="text" name="city" id="city" placeholder="Search city or ZIP" autocomplete="off">
         <button type="button" id="search">Search</button>
       </form>
     </div>
@@ -41,33 +41,38 @@
   <main class="wrapper main-wrapper">
     <section class="forecast">
       <div class="title">
-        <h1 class="title__city">Minsk, Belarus</h1>
-        <h3 class="title__date"> aasdfdf DF  23</h3>
+        <h1 class="title__city"></h1>
+        <h3 class="title__date">
+          <span id="forecast-title"></span>
+          <span id="forecast-day"></span>
+          <span id="forecast-month"></span>
+          <span id="forecast-time"></span>
+        </h3>
       </div>
 
       <div class="today">
-        <div class="today__temperature">10</div>
-        <div class="today__description">safdfasf</div>
-        <img class="today__image" src="./src/img/header/refresh-bg.png" alt="">
+        <div class="today__temperature" id="forecast-temperature"></div>
+        <div class="today__description" id="forecast-description"></div>
+        <img class="today__image" id="forecast-image" src="./src/img/header/refresh-bg.png" alt="">
       </div>
 
       <div class="days">
         <ul class="days-list">
           <li class="day day-1">
-            <div class="day__title">asdasd</div>
-            <div class="day__temperature">7°</div>
-            <img class="day__image" src="./src/img/header/refresh-bg.png" alt="">
+            <div class="day__title" id="forecast-title">asdasd</div>
+            <div class="day__temperature" id="forecast-temperature"></div>
+            <img class="day__image" id="forecast-image" src="./src/img/header/refresh-bg.png" alt="">
           </li>
           <li class="day day-2">
-            <div class="day__title">asdasd</div>
-            <div class="day__temperature">18°</div>
-            <img class="day__image" src="./src/img/header/refresh-bg.png" alt="">
+            <div class="day__title" id="forecast-title">asdasd</div>
+            <div class="day__temperature" id="forecast-temperature"></div>
+            <img class="day__image" id="forecast-image" src="./src/img/header/refresh-bg.png" alt="">
           </li>
-          <li class="day day-3">
-            <div class="day__title">asdasd</div>
-            <div class="day__temperature">-5°</div>
-            <img class="day__image" src="./src/img/header/refresh-bg.png" alt="">
-          </li>          
+          <!-- <li class="day day-3">
+            <div class="day__title" id="forecast-title">asdasd</div>
+            <div class="day__temperature" id="forecast-temperature"></div>
+            <img class="day__image" id="forecast-image" src="./src/img/header/refresh-bg.png" alt="">
+          </li>           -->
         </ul>
       </div>
     </section>

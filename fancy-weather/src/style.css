@@ -4,6 +4,7 @@ html {
   font-family: "Montserrat", sans-serif;
   color: white;
   background-color: black;
+  text-shadow: 2px 2px 2px black;
 }
 
 * {
@@ -16,6 +17,7 @@ html {
 body {
   background-size: cover;
   background-attachment: fixed;
+  background-position: center center;
   width: 100vw;
   height: 100vh;
 }
@@ -207,6 +209,13 @@ header {
   font-size: 8rem;
   line-height: 9.8rem;
   text-transform: uppercase;
+}
+.day__temperature::after {
+  content: "°";
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  top: 25px;
 }
 
 .day__image {
