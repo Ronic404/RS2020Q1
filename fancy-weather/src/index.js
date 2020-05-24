@@ -104,14 +104,14 @@ searchButton.addEventListener('click', () => {
 
 
 
-const date = new Date();
+
 const forecastTemperature = document.querySelectorAll('#forecast-temperature');
-const forecastTitle = document.querySelectorAll('#forecast-title');
-const forecastDescription = document.querySelectorAll('#forecast-description');
+const forecastWeekday = document.querySelectorAll('#forecast-title');
 const forecastImage = document.querySelectorAll('#forecast-image');
 const forecastDay = document.querySelector('#forecast-day');
 const forecastMonth = document.querySelector('#forecast-month');
 const forecastTime = document.querySelector('#forecast-time');
+const forecastDescription = document.querySelector('#forecast-description');
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -123,39 +123,59 @@ function getForecast(city) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      console.log(data.forecast.forecastday);
 
-      const temperature = data.forecast.forecastday;
+      const days = data.forecast.forecastday;
+      const today = data.current;
 
-      setForecastTemperature(temperature);
-      setForecastTitle();
-      // setForecastDescription();
-      // setForecastImage();
+      setForecastTemperature(today, days);
+      setForecastWeekday();
+      setForecastImage(days);
+      setForecastDescription(today);
     });
 }
 
-function setForecastTemperature(temperature) {
+function setForecastTemperature(today, days) {
   forecastTemperature.forEach((el, day) => {
-    el.innerText = Math.round(temperature[day].day.avgtemp_c);
+    el.innerText = (day === 0) ? Math.round(today.temp_c) : Math.round(days[day].day.avgtemp_c);
   });
 }
 
-function setForecastTitle() {
-  forecastTitle.forEach((el, day) => {
-    el.innerText = WEEKDAYS[date.getDay() + day];
+function setForecastWeekday() {
+  const date = new Date();
+  forecastWeekday.forEach((el, day) => {
+    el.innerText = (day === 0) ? WEEKDAYS[date.getDay() + day].slice(0, 3) : WEEKDAYS[date.getDay() + day];
   });
   forecastDay.innerText = date.getDate();
   forecastMonth.innerText = MONTHS[date.getMonth()];
-  
+  setInterval(setTime, 1000);
 }
 
-setInterval(setTime, 1000);
 function setTime() {
+  const date = new Date();
   const hours = (date.getHours().toString().length === 1) ? `0${date.getHours()}` : date.getHours();
   const minutes = (date.getMinutes().toString().length === 1) ? `0${date.getMinutes()}` : date.getMinutes();
   const seconds = (date.getSeconds().toString().length === 1) ? `0${date.getSeconds()}` : date.getSeconds();
 
   forecastTime.innerText = `${hours}:${minutes}:${seconds}`;
+}
+
+function setForecastImage(image) {
+  forecastImage.forEach((el, day) => {
+    // el.style.backgroundImage = `url(${image[day].day.condition.icon})`;
+    el.src = `${image[day].day.condition.icon}`;
+  });
+}
+
+function setForecastDescription(today) {
+  const forecastCondition = document.querySelector('#forecast-condition');
+  const forecastFeelslike = document.querySelector('#forecast-feelslike');
+  const forecastWind = document.querySelector('#forecast-wind');
+  const forecastHumidity = document.querySelector('#forecast-humidity');
+
+  forecastCondition.innerText = today.condition.text;
+  forecastFeelslike.innerText = `FEELS LIKE: ${Math.round(today.feelslike_c)}°`;
+  forecastWind.innerText = `WIND: ${Math.round(today.wind_kph)} m/s`;
+  forecastHumidity.innerText = `HUMIDITY: ${today.humidity}%`;
 }
 
 
