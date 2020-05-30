@@ -21,8 +21,15 @@ header {
   background: url(./img/header/refresh-bg.png) no-repeat;
   background-size: cover;
   border-radius: 5px;
+  cursor: pointer; 
+
+  &:hover {
+    background-color:rgba(174, 181, 185, 0.5);
+  }
+  
     img {
       margin: 14px;
+      transition: 1s;
     }
 }
 
@@ -61,6 +68,11 @@ header {
   font-size: 1.4rem;
   line-height: 1.7rem;
   color: white;
+
+  &::placeholder {
+    color: rgba($color: white, $alpha: .7);
+  }
+
     &:focus {
       outline: none;
       &::placeholder {
