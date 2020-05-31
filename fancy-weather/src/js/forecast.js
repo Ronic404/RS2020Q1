@@ -1,19 +1,19 @@
 /* eslint-disable no-param-reassign */
 import {
   WEEKDAYS, MONTHS, forecastTemperature, forecastWeekday, forecastImage, forecastDay,
-  forecastMonth, forecastTime, titleCity,
+  forecastMonth, forecastTime, titleCity, CELSIUS_BUTTON,
 } from './variables.js';
 
 function getForecast(city) {
   const WEATHER_API_TOKEN = '0195bd982c2b4e669d3102224202405';
-  const WEATHER_URL = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_TOKEN}&q=${city}&days=5`;
+  const WEATHER_URL = `https://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_TOKEN}&q=${city}&days=4`;
   fetch(WEATHER_URL)
     .then((response) => response.json())
     .then((data) => {
       const days = data.forecast.forecastday;
       const today = data.current;
       const { location } = data;
-
+      console.log(data);
       setPageTitle(location);
       setForecastTemperature(today, days);
       setForecastWeekday();
@@ -28,9 +28,20 @@ function setPageTitle(location) {
 
 function setForecastTemperature(today, days) {
   forecastTemperature.forEach((el, day) => {
-    el.innerText = (day === 0) ? Math.round(today.temp_c) : Math.round(days[day].day.avgtemp_c);
+    try {
+      if (CELSIUS_BUTTON.classList.contains('active')) {
+        el.innerText = (day === 0) ? Math.round(today.temp_c) : Math.round(days[day].day.avgtemp_c);
+      } else {
+        el.innerText = (day === 0) ? Math.round(today.temp_c * (9 / 5) + 32)
+          : Math.round(days[day].day.avgtemp_c * (9 / 5) + 32);
+      }
+    } catch {
+      el.innerText = '?';
+    }
   });
 }
+
+// (el * (9 / 5) + 32)
 
 function setForecastWeekday() {
   const date = new Date();
@@ -55,7 +66,11 @@ function setTime() {
 
 function setForecastImage(image) {
   forecastImage.forEach((el, day) => {
-    el.src = `${image[day].day.condition.icon}`;
+    try {
+      el.src = `${image[day].day.condition.icon}`;
+    } catch {
+      window.console.warn('Не можем получить информацию о погоде');
+    }
   });
 }
 
@@ -65,7 +80,7 @@ function setForecastDescription(today) {
   const forecastWind = document.querySelector('#forecast-wind');
   const forecastHumidity = document.querySelector('#forecast-humidity');
 
-  forecastCondition.innerText = today.condition.text;
+  forecastCondition.innerText = today.condition.text.split(' ').slice(0, 2).join(' ');
   forecastFeelslike.innerText = `FEELS LIKE: ${Math.round(today.feelslike_c)}°`;
   forecastWind.innerText = `WIND: ${Math.round(today.wind_kph)} m/s`;
   forecastHumidity.innerText = `HUMIDITY: ${today.humidity}%`;

@@ -2,6 +2,10 @@ header {
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .settings-block {
@@ -10,8 +14,14 @@ header {
   line-height: 1.7rem;
   font-weight: bold;
   text-transform: uppercase;
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 10px;
+  }
+
     &>div {
       margin-right: 10px;
+      box-shadow: 0px 0px 3px 1px #888;
     }
 }
 
@@ -24,7 +34,7 @@ header {
   cursor: pointer; 
 
   &:hover {
-    background-color:rgba(174, 181, 185, 0.5);
+    background-color:rgba(174, 181, 185, 0.7);
   }
   
     img {
@@ -36,8 +46,13 @@ header {
 .settings-block__lang {
   width: 71px;
   height: 44px;
-  background: rgba(174, 181, 185, 0.5);
+  background: rgba(174, 181, 185, 0.7);
   border-radius: 5px;
+}
+
+.lang-switcher {
+  line-height: 44px;
+  text-align: center;
 }
 
 .settings-block__fc {
@@ -46,11 +61,20 @@ header {
   height: 44px;
   background: rgba(76, 82, 85, 0.4);
   border-radius: 5px;
+  overflow: hidden;
     div {
       width: 50%;
       text-align: center;
       line-height: 44px;
+      &:hover {
+        background-color:rgba(174, 181, 185, 0.5);
+        cursor: pointer;
+      }
     }
+}
+
+.active{
+  background-color:rgba(174, 181, 185, 1)
 }
 
 .search-block__form {

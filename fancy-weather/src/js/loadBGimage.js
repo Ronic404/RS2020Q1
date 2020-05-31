@@ -13,6 +13,8 @@ export default function loadBackgroundImage() {
     })
     .catch(() => {
       document.body.style.backgroundImage = 'url("https://www.positronx.io/wp-content/uploads/2019/04/bandwidth-limit-exceeded-3807-01.jpg")';
+      PRELOADER.classList.add('hide');
+      window.console.warn('Превышено число попыток запроса картинок');
     });
 }
 

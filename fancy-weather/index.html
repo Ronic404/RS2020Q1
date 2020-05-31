@@ -23,16 +23,13 @@
         <img id="refresh-arrays" src="./src/img/header/refresh.svg" alt="">
       </div>
       <div class="settings-block__lang">
-        <ul>
-          <p>EN</p>
+        <ul class="lang-switcher">
           <li>EN</li>
-          <li>RU</li>
-          <li>BE</li>
         </ul>
       </div>
       <div class="settings-block__fc">
-          <div class="settings-block__fahrenheit">°F</div>
-          <div class="settings-block__celsius">°C</div>
+          <div class="settings-block__fc_item settings-block__fahrenheit" id="fahrenheit">°F</div>
+          <div class="settings-block__fc_item settings-block__celsius active" id="celsius">°C</div>
       </div>
     </div>
 
@@ -51,7 +48,7 @@
       <div class="title">
         <h1 class="title__city"></h1>
         <h3 class="title__date">
-          <span id="forecast-title"></span>
+          <span class="forecast-title"></span>
           <span id="forecast-day"></span>
           <span id="forecast-month"></span>
           <span id="forecast-time"></span>
@@ -59,33 +56,33 @@
       </div>
 
       <div class="today">
-        <div class="today__temperature" id="forecast-temperature"></div>
+        <div class="today__temperature forecast-temperature"></div>
         <div class="today__description" id="forecast-description">
           <span class="today__condition" id="forecast-condition"></span><br>
           <span id="forecast-feelslike"></span><br>
           <span id="forecast-wind"></span><br>
           <span id="forecast-humidity"></span>
         </div>
-        <img class="today__image" id="forecast-image" src="" alt="">
+        <img class="today__image forecast-image" src="" alt="">
       </div>
 
       <div class="days">
         <ul class="days-list">
           <li class="day day-1">
-            <div class="day__title" id="forecast-title"></div>
-            <div class="day__temperature" id="forecast-temperature"></div>
-            <img class="day__image" id="forecast-image" src="" alt="">
+            <div class="day__title forecast-title"></div>
+            <div class="day__temperature forecast-temperature"></div>
+            <img class="day__image forecast-image" src="" alt="">
           </li>
           <li class="day day-2">
-            <div class="day__title" id="forecast-title"></div>
-            <div class="day__temperature" id="forecast-temperature"></div>
-            <img class="day__image" id="forecast-image" src="" alt="">
+            <div class="day__title forecast-title"></div>
+            <div class="day__temperature forecast-temperature"></div>
+            <img class="day__image forecast-image" src="" alt="">
           </li>
-          <!-- <li class="day day-3">
-            <div class="day__title" id="forecast-title">asdasd</div>
-            <div class="day__temperature" id="forecast-temperature"></div>
-            <img class="day__image" id="forecast-image" src="" alt="">
-          </li>           -->
+          <li class="day day-3">
+            <div class="day__title forecast-title"></div>
+            <div class="day__temperature forecast-temperature"></div>
+            <img class="day__image forecast-image" src="" alt="">
+          </li>          
         </ul>
       </div>
     </section>

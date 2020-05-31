@@ -2,18 +2,21 @@
 
 // import './scss/main.scss';
 
-import { PRELOADER } from './js/variables.js';
+import { PRELOADER, FC_BUTTONS } from './js/variables.js';
+import { getForecast, setPageTitle } from './js/forecast.js';
 import loadBackgroundImage from './js/loadBGimage.js';
 import showCoordinates from './js/showCoordinates.js';
-import { getForecast, setPageTitle } from './js/forecast.js';
-
-window.onload = function () {
-  PRELOADER.classList.add('hide');
-};
+import fcSwitcher from './js/fcSwitcher.js';
 
 const searchInput = document.querySelector('#city');
 const searchButton = document.querySelector('#search');
-let mapCoordinates = '';
+
+let mapCoordinates = [];
+
+window.onload = function () {
+  getGeolocation();
+  PRELOADER.classList.add('hide');
+};
 
 function getGeolocation() {
   const GEOLOCATION_TOKEN = '80118c9e4141b6';
@@ -25,6 +28,7 @@ function getGeolocation() {
       getForecast(data.city);
       showCoordinates(data.loc);
       setMapCoordinates(data.loc);
+      setTimeout(init, 1500);
     });
 }
 
@@ -39,7 +43,6 @@ function getGeoObjectFromInput() {
     .then((response) => response.json())
     .then((data) => {
       mapCoordinates = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ').reverse();
-
       const city = data.response.GeoObjectCollection.featureMember[0].GeoObject.name;
       const country = data.response.GeoObjectCollection.featureMember[0].GeoObject.description;
       loadBackgroundImage(city);
@@ -53,6 +56,7 @@ function getGeoObjectFromInput() {
     .catch(() => alert(`Вы ввели: ${searchInput.value}\nТакой адрес не существует`));
 }
 
+
 searchInput.addEventListener('keydown', (event) => {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -64,12 +68,13 @@ searchButton.addEventListener('click', () => {
   getGeoObjectFromInput();
 });
 
-getGeolocation();
-
+FC_BUTTONS.forEach((el) => {
+  el.addEventListener('click', fcSwitcher);
+});
 
 //= ============ set map ===============
 let myMap;
-ymaps.ready(init);
+// ymaps.ready(init);
 function init() {
   myMap = new ymaps.Map('map', {
     center: mapCoordinates,
