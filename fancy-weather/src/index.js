@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-multiple-empty-lines */
 
-// import './scss/main.scss';
+import './scss/main.scss';
+import Background from './img/header/refresh-bg.png';
+import Refresh from './img/header/refresh.svg';
 
 import { PRELOADER, FC_BUTTONS } from './js/variables.js';
 import { getForecast, setPageTitle } from './js/forecast.js';

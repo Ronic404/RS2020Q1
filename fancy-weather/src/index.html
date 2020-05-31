@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="./src/img/favicon.ico" rel="icon" type="image/x-icon">
+  <title>Fancy Weather</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
   <div class="preloader">
@@ -20,7 +18,7 @@
   <header class="wrapper">
     <div class="settings-block">
       <div class="settings-block__refresh">
-        <img id="refresh-arrays" src="./src/img/header/refresh.svg" alt="">
+        <div id="refresh-arrays"></div> 
       </div>
       <div class="settings-block__lang">
         <ul class="lang-switcher">
@@ -97,6 +95,6 @@
   </main>
 
   <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=b456edb6-d61e-42d8-b468-f0c7e0c63be9"></script>
-  <script src="./src/index.js" type="module"></script>
+  <script src="./dist/bundle.js"></script>
 </body>
 </html>

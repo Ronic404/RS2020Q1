@@ -28,7 +28,7 @@ header {
 .settings-block__refresh {
   width: 44px;
   height: 44px;
-  background: url(./img/header/refresh-bg.png) no-repeat;
+  background: url(../img/header/refresh-bg.png) no-repeat;
   background-size: cover;
   border-radius: 5px;
   cursor: pointer; 
@@ -37,9 +37,12 @@ header {
     background-color:rgba(174, 181, 185, 0.7);
   }
   
-    img {
+    div {
       margin: 14px;
       transition: 1s;
+      background-image: url(../img/header/refresh.svg);
+      width: 15px;
+      height: 20px;
     }
 }
 

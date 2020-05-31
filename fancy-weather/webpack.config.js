@@ -1,6 +1,6 @@
-/* eslint-disable new-cap */
 const path = require('path');
-const miniCss = require('mini-css-extract-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCss = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -18,13 +18,13 @@ module.exports = {
       {
         test: /\.(s*)css$/,
         use: [
-          miniCss.loader,
+          MiniCss.loader,
           'css-loader',
           'sass-loader',
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg|ico)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -34,8 +34,15 @@ module.exports = {
     ],
   },
   plugins: [
-    new miniCss({
+    new HTMLWebpackPlugin({
+      template: './src/index.html',
+      favicon: './src/img/favicon.ico',
+    }),
+    new MiniCss({
       filename: 'style.css',
     }),
   ],
+  devServer: {
+    contentBase: './dist',
+  },
 };
