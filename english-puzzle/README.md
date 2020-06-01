@@ -1,0 +1,1 @@
+# In order to build app, write in terminal "npm run build"
