@@ -13,6 +13,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       title: 'English puzzle',
       template: './src/index.html',
+      favicon: './src/img/favicon.svg',
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
@@ -22,6 +23,14 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images',
+          name: '[path][name].[ext]',
+        },
       },
     ],
   },
