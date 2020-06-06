@@ -1,0 +1,23 @@
+.start-screen {
+  position: absolute;
+  border: 2px solid green;
+  width: 700px;
+  height: 300px;
+  top: calc(100%/2 - 150px);
+  left: calc(100%/2 - 350px);
+}
+
+.start-screen__title {
+  @include text(4rem, 1, $light, 700);
+  font-family: 'Cinzel Decorative', cursive;
+  text-transform: uppercase;
+  letter-spacing: 2rem;
+  text-align: center;
+  }
+
+.start-screen__description {
+  @include text(2rem, 1.5, $light);
+  font-family: 'Cormorant Upright', serif;
+  text-align: center;
+  padding: 50px;
+}
