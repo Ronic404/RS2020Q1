@@ -1,5 +1,27 @@
+.button {
+  cursor: pointer;
+  border: 0;
+  box-shadow: 0 0 2px 2px $button-shadow;
+  outline-color: transparent;;
+}
+
 .start-screen__button {
-  width: 100px;
+  @include text(2rem, 1, $text-light, 700);
+  @extend %text-shadow;
+  background: linear-gradient(45deg, #15541f, #dea73b);
+  font-family: 'Cinzel Decorative', cursive;
+  width: 200px;
   height: 50px;
-  margin-left: calc(100%/2 - 50px);
+  margin-left: calc(100%/2 - 100px);
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scaleX(1.2) scaleY(1.1);
+  }
 }
