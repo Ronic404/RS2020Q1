@@ -7,13 +7,39 @@
 </head>
 <body>
   <main>
-    <div class="start-screen">
+    <div class="start-screen hide">
       <h1 class="start-screen__title">English puzzle</h1>
       <p class="start-screen__description">
         Click on words, collect phrases<br>
         Words can be drag and drop. Select tooltips in the menu
       </p>
       <button type="button" class="start-screen__button button">Start</button>
+    </div>
+
+
+
+
+
+    <div class="login-page">
+      <h1 class="login-page__title">English puzzle</h1>
+      <div class="form-block">
+        <form action="users" method="POST" class="registration">
+          <h2 class="registration__title">Registration</h2>
+          <input type="email" name="email" id="registration-email" placeholder="Email" autocomplete="off" required>
+          <p class="registration__error" id="email-error"></p>
+          <input type="password" name="password" id="registration-password" placeholder="password" autocomplete="off" required>
+          <p class="registration__error" id="password-error"></p>
+          <button class="button registration__button" id="registration__button" type="submit">Create account</button>
+        </form>
+
+
+
+
+
+        <form action="#" method="POST" class="authorization hide">
+
+        </form>
+      </div>
     </div>
   </main>
 </body>

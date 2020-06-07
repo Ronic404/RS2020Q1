@@ -20,6 +20,11 @@ module.exports = {
   ],
   module: {
     rules: [
+      // {
+      //   test: /\.js$/i,
+      //   exclude: /node_modules/,
+      //   loader: 'babel-loader',
+      // },
       {
         test: /\.s?css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
@@ -41,4 +46,5 @@ module.exports = {
       },
     ],
   },
+  devtool: 'source-map',
 };

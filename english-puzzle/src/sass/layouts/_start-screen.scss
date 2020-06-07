@@ -20,7 +20,7 @@
 .start-screen__description {
   @include text(2.5rem, 1.5, $text-light);
   @extend %text-shadow;
-  font-family: 'Cormorant Upright', serif;
+  
   text-align: center;
   padding: 50px;
   
