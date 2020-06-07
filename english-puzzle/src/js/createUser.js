@@ -33,9 +33,12 @@ REGISTRATION_BUTTON.addEventListener('click', (event) => {
     REGISTRATION_PASSWORD_ERROR.textContent = '';
   }
 
-  createUser(newUser);
   START_SCREEN.classList.remove('hide');
   LOGIN_PAGE.classList.add('hide');
+  REGISTRATION_EMAIL.value = '';
+  REGISTRATION_PASSWORD.value = '';
+
+  createUser(newUser);
 });
 
 

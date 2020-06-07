@@ -6,7 +6,18 @@
   <title>English puzzle</title>
 </head>
 <body>
-  <main>
+  <header class="header wrapper">
+    <div class="logo">English puzzle</div>
+    <div class="header__buttons">
+      <button type="button" class="button header__button" id="sign-up-button">Sign up</button>
+      <button type="button" class="button header__button" id="log-in-button">Log in</button>
+      <button type="button" class="button header__button hide" id="log-out-button">Log out</button>
+    </div>
+  </header>
+
+
+
+  <main class="wrapper">
     <div class="start-screen hide">
       <h1 class="start-screen__title">English puzzle</h1>
       <p class="start-screen__description">
@@ -17,13 +28,10 @@
     </div>
 
 
-
-
-
     <div class="login-page">
       <h1 class="login-page__title">English puzzle</h1>
       <div class="form-block">
-        <form action="users" method="POST" class="registration">
+        <form action="users" method="POST" class="registration hide" id="registration-form">
           <h2 class="registration__title">Registration</h2>
           <input type="email" name="email" id="registration-email" placeholder="Email" autocomplete="off" required>
           <p class="registration__error" id="email-error"></p>
@@ -32,12 +40,12 @@
           <button class="button registration__button" id="registration__button" type="submit">Create account</button>
         </form>
 
-
-
-
-
-        <form action="#" method="POST" class="authorization hide">
-
+        <form action="#" method="POST" class="authorization" id="authorization-form">
+          <h2 class="authorization__title">Log into your account</h2>
+          <input type="email" name="email" id="authorization-email" placeholder="Email" autocomplete="off" required>
+          <input type="password" name="password" id="authorization-password" placeholder="password" autocomplete="off" required>
+          <p class="authorization__error" id="password-error"></p>
+          <button class="button authorization__button" id="authorization__button" type="submit">Login</button>
         </form>
       </div>
     </div>

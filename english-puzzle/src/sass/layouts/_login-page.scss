@@ -2,7 +2,14 @@
   display: flex;
   position: relative;
   justify-content: space-between;
-  padding: 0 50px;
+  align-items: center;
+  height: 100%;
+}
+
+.login-page__title {
+  @include text(4rem, 1, $text-light, 700);
+  @extend %text-shadow;
+  font-family: 'Cinzel Decorative', cursive;
 }
 
 .form-block {
@@ -12,13 +19,15 @@
   height: 500px;
   background-color: rgba($color: #fff, $alpha: 0.4);
   padding: 20px;
+  border-radius: 20px;
 
   * {
     width: 100%;
   }
 }
 
-.registration__title {
+.registration__title,
+.authorization__title {
   @include text(3rem, 1, $text-light);
   padding-bottom: 30px;
   text-align: center;

@@ -26,9 +26,26 @@
   }
 }
 
-.registration__button {
+.registration__button,
+.authorization__button {
   @include text(2rem, 1, $text-dark, 700);
   height: 50px;
+  background-color: #e4d7ad;
+
+  &:hover {
+    background-color: #d8b441;
+    color: $text-light;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+.header__button {
+  @include text(2rem, 1, $text-dark, 700);
+  margin-left: 20px;
+  padding: 5px;
   background-color: #e4d7ad;
 
   &:hover {

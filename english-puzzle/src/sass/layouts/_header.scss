@@ -1,0 +1,22 @@
+.header {
+  box-sizing: border-box;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid green;
+  z-index: 10;
+}
+
+.logo {
+  @include text(4rem, 1, $text-light, 700);
+  @extend %text-shadow;
+  cursor: pointer;
+}
+
+.header__buttons {
+  display: flex;
+  justify-content: flex-end;
+}
