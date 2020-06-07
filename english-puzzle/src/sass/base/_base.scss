@@ -31,4 +31,8 @@ main {
 .hide {
   display: none !important;
 }
+
+.error {
+  @include text(2rem, 1.4, $text-error)
+}
   

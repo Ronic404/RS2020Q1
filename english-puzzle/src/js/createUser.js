@@ -33,10 +33,6 @@ REGISTRATION_BUTTON.addEventListener('click', (event) => {
     REGISTRATION_PASSWORD_ERROR.textContent = '';
   }
 
-  START_SCREEN.classList.remove('hide');
-  LOGIN_PAGE.classList.add('hide');
-  REGISTRATION_EMAIL.value = '';
-  REGISTRATION_PASSWORD.value = '';
 
   createUser(newUser);
 });
@@ -54,8 +50,15 @@ async function createUser(user) {
 
   if (response.status === 417) {
     REGISTRATION_EMAIL_ERROR.textContent = 'This email address is already registered';
-  } else {
+  } else if (response.status === 200) {
+    START_SCREEN.classList.remove('hide');
+    LOGIN_PAGE.classList.add('hide');
+    REGISTRATION_EMAIL.value = '';
+    REGISTRATION_PASSWORD.value = '';
+
     const data = await response.json();
     window.console.log(data);
+  } else {
+    window.console.warn(response.statusText);
   }
 }
