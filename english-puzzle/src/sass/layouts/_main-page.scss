@@ -17,16 +17,17 @@
 .phrase {
   height: calc(100% / 10);
   font-size: 0;
+  display: flex;
 }
 
 .phrase > li {
   @include text(2rem, 1, $text-dark);
   box-sizing: border-box;
   display: inline-block;
-  width: calc(100% / 10);  
   height: 100%;
   border: 1px solid greenyellow;
   margin: 0;
+  flex-grow: 1;
 }
 
 select {

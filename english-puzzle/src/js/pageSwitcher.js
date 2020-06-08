@@ -3,7 +3,6 @@ import {
   START_BUTTON, SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON,
 } from './variables.js';
 
-import renderPuzzle from './renderPuzzle.js';
 import getWords from './getWords.js';
 
 export default function pageSwitcher() {
@@ -41,6 +40,5 @@ export default function pageSwitcher() {
     LOGIN_PAGE.classList.add('hide');
 
     getWords(1, 1);
-    // renderPuzzle();
   });
 }

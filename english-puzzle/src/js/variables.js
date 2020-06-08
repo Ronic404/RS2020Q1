@@ -11,8 +11,9 @@ const START_BUTTON = document.querySelector('.start-screen__button');
 const SIGN_UP_BUTTON = document.querySelector('#sign-up-button');
 const LOG_IN_BUTTON = document.querySelector('#log-in-button');
 const LOG_OUT_BUTTON = document.querySelector('#log-out-button');
+const REFRESH_BUTTON = document.querySelector('#refresh-button');
 
 export {
   RSSCHOOL_API_URL, MAIN_PAGE, START_SCREEN, LOGIN_PAGE, REGISTRATION_FORM, AUTHORIZATION_FORM, START_BUTTON,
-  SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON, PUZZLE_PAGE,
+  SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON, PUZZLE_PAGE, REFRESH_BUTTON,
 };
