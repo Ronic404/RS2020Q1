@@ -1,0 +1,40 @@
+.main-page {
+  background: red;
+  height: calc(100vh - 50px);
+  padding-top: 50px;
+}
+
+.main-page__bar {
+  height: 50px;
+  background-color: rgba($color: black, $alpha: 0.3);
+  position: relative;
+}
+
+.main-page__puzzle {
+  height: calc(100% - 100px);
+}
+
+.phrase {
+  height: calc(100% / 10);
+  font-size: 0;
+}
+
+.phrase > li {
+  @include text(2rem, 1, $text-dark);
+  box-sizing: border-box;
+  display: inline-block;
+  width: calc(100% / 10);  
+  height: 100%;
+  border: 1px solid greenyellow;
+  margin: 0;
+}
+
+select {
+  @include text(2rem, 1, $text-dark);
+  overflow-y: scroll;
+  max-height: 100px;
+}
+
+option {
+  @include text(2rem, 1, $text-dark);
+}

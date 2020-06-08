@@ -1,7 +1,10 @@
 import {
-  REGISTRATION_FORM, AUTHORIZATION_FORM, START_SCREEN, LOGIN_PAGE, SIGN_UP_BUTTON, LOG_IN_BUTTON,
-  LOG_OUT_BUTTON,
+  MAIN_PAGE, START_SCREEN, LOGIN_PAGE, REGISTRATION_FORM, AUTHORIZATION_FORM,
+  START_BUTTON, SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON,
 } from './variables.js';
+
+import renderPuzzle from './renderPuzzle.js';
+import getWords from './getWords.js';
 
 export default function pageSwitcher() {
   SIGN_UP_BUTTON.addEventListener('click', () => {
@@ -27,5 +30,17 @@ export default function pageSwitcher() {
 
     START_SCREEN.classList.add('hide');
     LOGIN_PAGE.classList.remove('hide');
+    MAIN_PAGE.classList.add('hide');
+
+    localStorage.removeItem('token');
+  });
+
+  START_BUTTON.addEventListener('click', () => {
+    MAIN_PAGE.classList.remove('hide');
+    START_SCREEN.classList.add('hide');
+    LOGIN_PAGE.classList.add('hide');
+
+    getWords(1, 1);
+    // renderPuzzle();
   });
 }

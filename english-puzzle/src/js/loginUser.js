@@ -35,6 +35,8 @@ async function loginUser(user) {
     AUTHORIZATION_ERROR.textContent = 'Wrong email or password';
     window.console.warn('Wrong email or password');
   } else if (response.status === 200) {
+    const data = await response.json();
+
     SIGN_UP_BUTTON.classList.add('hide');
     LOG_IN_BUTTON.classList.add('hide');
     LOG_OUT_BUTTON.classList.remove('hide');
@@ -42,8 +44,10 @@ async function loginUser(user) {
     START_SCREEN.classList.remove('hide');
     LOGIN_PAGE.classList.add('hide');
 
-    const data = await response.json();
     window.console.log(data);
+
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data.userId);
   } else {
     window.console.warn(response);
   }

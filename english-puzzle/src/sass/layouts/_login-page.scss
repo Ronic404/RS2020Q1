@@ -10,6 +10,8 @@
   @include text(4rem, 1, $text-light, 700);
   @extend %text-shadow;
   font-family: 'Cinzel Decorative', cursive;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .form-block {

@@ -3,11 +3,56 @@ import './sass/main.scss';
 import './js/createUser.js';
 import './js/loginUser.js';
 
-import getWords from './js/getWords.js';
+import { RSSCHOOL_API_URL } from './js/variables.js';
+import showFirstPage from './js/showFirstPage.js';
 import pageSwitcher from './js/pageSwitcher.js';
+// import getWords from './js/getWords.js';
+// import renderPuzzle from './js/renderPuzzle.js';
+
+const TOKEN = localStorage.getItem('token');
+const USER_ID = localStorage.getItem('userId');
+const WORD_ID = '5e9f5ee35eb9e72bc21af5cf';
+
+// console.log(USER_ID, WORD_ID);
+
+const getUserWord = async ({ userId, wordId }) => {
+  window.console.log(userId, wordId);
+
+  const response = await fetch(`${RSSCHOOL_API_URL}users/${userId}/words/${wordId}`, {
+    method: 'GET',
+    withCredentials: true,
+    headers: {
+      Authorization: `Bearer ${TOKEN}`,
+      Accept: 'application/json',
+    },
+  });
+  const data = await response.json();
+
+  window.console.log(data);
+};
+
+// const createUserWord = async ({ userId, wordId, word }) => {
+//   const response = await fetch(`${RSSCHOOL_API_URL}users/${userId}/words/${wordId}`, {
+//     method: 'POST',
+//     Headers: {
+//       Authorization: `Bearer ${TOKEN}`,
+//       Accept: 'application/json',
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(word),
+//   });
+//   const data = await response.json();
+
+//   window.console.log(data);
+// };
 
 
 window.addEventListener('load', () => {
-  getWords(3, 3); // Страницы 0-29 по 20 слов; Группы 0-5
+  showFirstPage();
   pageSwitcher();
+  // getWords(15, 0); // Страницы 0-29 по 20 слов; Группы 0-5
+  getUserWord({ userId: USER_ID, wordId: WORD_ID });
+  // createUserWord(USER_ID, WORD_ID);
+
+  // renderPuzzle();
 });
