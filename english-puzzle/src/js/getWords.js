@@ -3,7 +3,7 @@ import renderPuzzle from './renderPuzzle.js';
 
 
 export default function getWords() {
-  const SELECTED_ROUND = document.querySelector('#rounds').value - 1;
+  const SELECTED_ROUND = Math.ceil((document.querySelector('#rounds').value) / 2) - 1;
   const SELECTED_GROUP = document.querySelector('#groups').value - 1;
 
   fetch(`${RSSCHOOL_API_URL}words?page=${SELECTED_ROUND}&group=${SELECTED_GROUP}`)

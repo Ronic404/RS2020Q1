@@ -1,7 +1,9 @@
 .main-page {
-  background: red;
+  background: rgb(156, 39, 39);
   height: calc(100vh - 50px);
   padding-top: 50px;
+  position: relative;
+  z-index: 5;
 }
 
 .main-page__bar {
@@ -11,7 +13,7 @@
 }
 
 .main-page__puzzle {
-  height: calc(100% - 100px);
+  height: 70%;
 }
 
 .phrase {
@@ -21,7 +23,8 @@
 }
 
 .phrase > li {
-  @include text(2rem, 1, $text-dark);
+  @include text(2rem, 1, $text-light);
+  @extend %text-shadow;
   box-sizing: border-box;
   display: inline-block;
   height: 100%;
