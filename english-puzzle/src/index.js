@@ -6,8 +6,6 @@ import './js/loginUser.js';
 import { RSSCHOOL_API_URL } from './js/variables.js';
 import showFirstPage from './js/showFirstPage.js';
 import pageSwitcher from './js/pageSwitcher.js';
-// import getWords from './js/getWords.js';
-// import renderPuzzle from './js/renderPuzzle.js';
 
 const TOKEN = localStorage.getItem('token');
 const USER_ID = localStorage.getItem('userId');
@@ -50,9 +48,6 @@ const getUserWord = async ({ userId, wordId }) => {
 window.addEventListener('load', () => {
   showFirstPage();
   pageSwitcher();
-  // getWords(15, 0); // Страницы 0-29 по 20 слов; Группы 0-5
   getUserWord({ userId: USER_ID, wordId: WORD_ID });
   // createUserWord(USER_ID, WORD_ID);
-
-  // renderPuzzle();
 });

@@ -1,6 +1,6 @@
 import {
   MAIN_PAGE, START_SCREEN, LOGIN_PAGE, REGISTRATION_FORM, AUTHORIZATION_FORM,
-  START_BUTTON, SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON,
+  START_BUTTON, SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON, PUZZLE_PAGE,
 } from './variables.js';
 
 import getWords from './getWords.js';
@@ -31,14 +31,18 @@ export default function pageSwitcher() {
     LOGIN_PAGE.classList.remove('hide');
     MAIN_PAGE.classList.add('hide');
 
-    localStorage.removeItem('token');
+    localStorage.clear();
   });
 
   START_BUTTON.addEventListener('click', () => {
     MAIN_PAGE.classList.remove('hide');
     START_SCREEN.classList.add('hide');
     LOGIN_PAGE.classList.add('hide');
+    PUZZLE_PAGE.innerHTML = '';
 
-    getWords(1, 1);
+    if (!localStorage.getItem('player-level')) localStorage.setItem('player-level', '[1, 1]');
+
+    getWords(...localStorage.getItem('player-level'));
+    [document.querySelector('#rounds').value, document.querySelector('#groups').value] = JSON.parse(localStorage.getItem('player-level'));
   });
 }

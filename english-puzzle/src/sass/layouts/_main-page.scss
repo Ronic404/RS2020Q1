@@ -31,6 +31,21 @@
   border: 1px solid greenyellow;
   margin: 0;
   flex-grow: 1;
+
+  position: relative;
+}
+
+.phrase > li:after  {
+  content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    border: 1px solid yellow;
+    border-radius: 50%;
+    right: -14px;
+    top: 10px;
+    background: transparent;
+    z-index: -1;
 }
 
 select {
