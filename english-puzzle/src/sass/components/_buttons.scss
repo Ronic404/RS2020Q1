@@ -5,6 +5,7 @@
   outline-color: transparent;
   border-radius: 5px;  
   transition: 0.3s;  
+  padding: 5px;
 }
 
 .start-screen__button {
@@ -30,10 +31,11 @@
 .authorization__button {
   @include text(2rem, 1, $text-dark, 700);
   height: 50px;
-  background-color: #e4d7ad;
+  background-color: $button-bg-normal;
+  margin-top: 50px;
 
   &:hover {
-    background-color: #d8b441;
+    background-color: $button-bg-hover;
     color: $text-light;
   }
 
@@ -46,10 +48,10 @@
   @include text(2rem, 1, $text-dark, 700);
   margin-left: 20px;
   padding: 5px;
-  background-color: #e4d7ad;
+  background-color: $button-bg-normal;
 
   &:hover {
-    background-color: #d8b441;
+    background-color: $button-bg-hover;
     color: $text-light;
   }
 
@@ -59,9 +61,44 @@
 }
 
 .button-hint {
-  background-color: #e4d7ad;
+  padding: 5px;
+  background-color: $button-bg-normal;
   
   &_active {
-    background-color: rgb(6, 141, 24);
+    background-color: $button-bg-active;
+  }
+
+  &:hover {
+    background-color: $button-bg-hover;
+  }
+
+  &:active {
+    transform: scaleY(1.1);
+  }
+}
+
+.main-page__bar button {
+  margin: 0 10px;
+}
+
+.footer__button {
+  @include text(2rem, 1, $text-dark, 700);
+  margin: 0 10px;
+  padding: 5px;
+
+  &:hover {
+    background-color: $button-bg-hover;
+  }
+}
+
+#refresh-button,
+#play-audio {
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  transition: 0.6s;
+
+  &:hover {
+    background-color: $button-bg-hover;
   }
 }

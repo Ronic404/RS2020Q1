@@ -1,5 +1,6 @@
 import {
   BUTTONS_HINT, TRANSLATE_BUTTON, AUDIO_BUTTON, TEXT_TRANSLATE, AUDIO_TAG, PLAY_AUDIO_BUTTON,
+  REFRESH_BUTTON,
 } from './variables.js';
 
 BUTTONS_HINT.forEach((button) => {
@@ -38,4 +39,11 @@ AUDIO_BUTTON.addEventListener('click', () => {
 
 PLAY_AUDIO_BUTTON.addEventListener('click', () => {
   AUDIO_TAG.play();
+});
+
+let rotate = 0;
+
+REFRESH_BUTTON.addEventListener('click', () => {
+  rotate += 360;
+  REFRESH_BUTTON.style.transform = `rotate(${rotate}deg)`;
 });

@@ -12,6 +12,19 @@
   height: 50px;
   background-color: rgba($color: black, $alpha: 0.3);
   position: relative;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin: 0 10px 0 30px;
+  }
+}
+
+.main-page__buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30px;
 }
 
 .text-translate {
@@ -27,7 +40,7 @@
 }
 
 .main-page__puzzle {
-  height: 70%;
+  height: 60%;
 }
 
 .phrase {
@@ -82,29 +95,3 @@ option {
   height: 100%;
   display: flex;
 } 
-
-// .result-string > li {
-//   @include text(2rem, 1, $text-light);
-//   @extend %text-shadow;
-//   box-sizing: border-box;
-//   display: inline-block;
-//   border: 1px solid greenyellow;
-//   margin: 0;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: relative;
-
-//   &::after {
-//     content: "";
-//     width: 15px;
-//     height: 15px;
-//     position: absolute;
-//     border-right: 2px solid yellow;
-//     border-radius: 50%;
-//     top: 35%;
-//     left: 97%;
-//     border-left: none;
-//   }
-// }

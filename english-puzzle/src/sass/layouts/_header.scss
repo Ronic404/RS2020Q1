@@ -13,9 +13,11 @@
   @include text(4rem, 1, $text-light, 700);
   @extend %text-shadow;
   cursor: pointer;
+  margin-left: 50px;
 }
 
 .header__buttons {
   display: flex;
   justify-content: flex-end;
+  margin-right: 50px;
 }

@@ -37,6 +37,7 @@ main {
 }
 
 .error {
-  @include text(2rem, 1.4, $text-error)
+  @include text(2rem, 1.4, $text-error);
+  position: absolute;
 }
   
