@@ -14,8 +14,15 @@ const SIGN_UP_BUTTON = document.querySelector('#sign-up-button');
 const LOG_IN_BUTTON = document.querySelector('#log-in-button');
 const LOG_OUT_BUTTON = document.querySelector('#log-out-button');
 const REFRESH_BUTTON = document.querySelector('#refresh-button');
+const BUTTONS_HINT = document.querySelectorAll('.button-hint');
+const TRANSLATE_BUTTON = document.querySelector('#translate-button');
+const AUDIO_BUTTON = document.querySelector('#audio-button');
+const PLAY_AUDIO_BUTTON = document.querySelector('#play-audio');
+
+const AUDIO_TAG = document.querySelector('audio');
 
 export {
   RSSCHOOL_API_URL, MAIN_PAGE, START_SCREEN, LOGIN_PAGE, REGISTRATION_FORM, AUTHORIZATION_FORM, START_BUTTON,
   SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON, PUZZLE_PAGE, REFRESH_BUTTON, RESULT_STRING, TEXT_TRANSLATE,
+  AUDIO_TAG, BUTTONS_HINT, TRANSLATE_BUTTON, AUDIO_BUTTON, PLAY_AUDIO_BUTTON,
 };

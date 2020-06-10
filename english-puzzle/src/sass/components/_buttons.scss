@@ -4,7 +4,7 @@
   box-shadow: 0 0 2px 2px $button-shadow;
   outline-color: transparent;
   border-radius: 5px;  
-  transition: 0.3s;
+  transition: 0.3s;  
 }
 
 .start-screen__button {
@@ -55,5 +55,13 @@
 
   &:active {
     opacity: 0.9;
+  }
+}
+
+.button-hint {
+  background-color: #e4d7ad;
+  
+  &_active {
+    background-color: rgb(6, 141, 24);
   }
 }

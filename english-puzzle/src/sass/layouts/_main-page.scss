@@ -14,11 +14,16 @@
   position: relative;
 }
 
-.main-page__translate {
+.text-translate {
   @include text(2rem, 1, $text-light);
   @extend %text-shadow;
   text-align: center;
   padding: 10px 0;
+  opacity: 0;
+
+  &_active {
+    opacity: 1;
+  }
 }
 
 .main-page__puzzle {
