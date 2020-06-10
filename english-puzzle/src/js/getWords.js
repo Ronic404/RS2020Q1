@@ -1,6 +1,7 @@
 import { RSSCHOOL_API_URL, PUZZLE_PAGE, REFRESH_BUTTON } from './variables.js';
 import renderPuzzle from './renderPuzzle.js';
-
+import renderTextTranslate from './renderTextTranslate.js';
+import audio from './audio.js';
 
 export default function getWords() {
   const SELECTED_ROUND = Math.ceil((JSON.parse(localStorage.getItem('player-level'))[0]) / 2) - 1;
@@ -10,6 +11,8 @@ export default function getWords() {
     .then((response) => response.json())
     .then((data) => {
       renderPuzzle(data);
+      renderTextTranslate(data);
+      audio(data);
     });
 }
 

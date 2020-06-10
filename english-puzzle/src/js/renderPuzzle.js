@@ -15,6 +15,7 @@ export default function renderPuzzle(data) {
   for (let i = increase; i < increase + 10; i += 1) {
     const UL = document.createElement('ul');
     UL.className = `phrase phrase-${i}`;
+    UL.style.height = `${PUZZLE_PAGE.clientHeight / 10}px`;
     PUZZLE_PAGE.append(UL);
 
     const PHRASE_ARRAY = data[i].textExample.split(' ');
@@ -22,7 +23,10 @@ export default function renderPuzzle(data) {
 
     for (let j = 0; j < PHRASE_RANDOM_ARRAY.length; j += 1) {
       const LI = document.createElement('li');
+      LI.className = 'puzzle-item';
       LI.innerHTML = PHRASE_RANDOM_ARRAY[j];
+      LI.style.height = UL.style.height;
+      LI.style.width = `${PUZZLE_PAGE.clientWidth / PHRASE_RANDOM_ARRAY.length}px`;
       UL.append(LI);
     }
   }

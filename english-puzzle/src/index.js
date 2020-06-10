@@ -2,6 +2,8 @@ import './sass/main.scss';
 
 import './js/createUser.js';
 import './js/loginUser.js';
+import './js/gragdrop.js';
+import './js/audio.js';
 
 import { RSSCHOOL_API_URL } from './js/variables.js';
 import showFirstPage from './js/showFirstPage.js';
