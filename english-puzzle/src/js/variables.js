@@ -18,11 +18,15 @@ const BUTTONS_HINT = document.querySelectorAll('.button-hint');
 const TRANSLATE_BUTTON = document.querySelector('#translate-button');
 const AUDIO_BUTTON = document.querySelector('#audio-button');
 const PLAY_AUDIO_BUTTON = document.querySelector('#play-audio');
+const CHECK_BUTTON = document.querySelector('#check-button');
+const CONTINUE_BUTTON = document.querySelector('#continue-button');
+const DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
 
 const AUDIO_TAG = document.querySelector('audio');
 
 export {
   RSSCHOOL_API_URL, MAIN_PAGE, START_SCREEN, LOGIN_PAGE, REGISTRATION_FORM, AUTHORIZATION_FORM, START_BUTTON,
   SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON, PUZZLE_PAGE, REFRESH_BUTTON, RESULT_STRING, TEXT_TRANSLATE,
-  AUDIO_TAG, BUTTONS_HINT, TRANSLATE_BUTTON, AUDIO_BUTTON, PLAY_AUDIO_BUTTON,
+  AUDIO_TAG, BUTTONS_HINT, TRANSLATE_BUTTON, AUDIO_BUTTON, PLAY_AUDIO_BUTTON, CHECK_BUTTON, CONTINUE_BUTTON,
+  DO_NOT_KNOW_BUTTON,
 };
