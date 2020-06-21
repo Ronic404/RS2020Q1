@@ -129,6 +129,7 @@
           <button class="button" id="refresh-button" type="button">⭮</button>
           <button class="button button-hint" id="translate-button" type="button">Translate</button>
           <button class="button button-hint" id="audio-button" type="button">AutoAudio</button>
+          <button class="button button-hint" id="picture-button" type="button">✐</button>
           <button class="button" id="play-audio" type="button">⯈</button>
         </div>        
       </div>
@@ -140,13 +141,14 @@
 
       <div class="main-page__puzzle"></div>    
       
-      <div class="main-page__result">
-        <ul class="result-string"></ul>
+      <div class="main-page__current">
+        <p class="picture-title hide"></p>
+        <ul class="current-string"></ul>
       </div>
 
       <footer class="footer">
         <button type="button" class="button footer__button" id="donotknow-button">I don't know</button>
-        <button type="button" class="button footer__button" id="check-button">Check</button>
+        <button type="button" class="button footer__button hide" id="check-button">Check</button>
         <button type="button" class="button footer__button hide" id="continue-button">Continue</button>
       </footer>      
     </section>

@@ -1,10 +1,11 @@
-import { PUZZLE_PAGE, RESULT_STRING } from './variables.js';
+import { PUZZLE_PAGE, CURRENT_STRING } from './variables.js';
 
-PUZZLE_PAGE.addEventListener('click', (event) => {
-  if (event.target.closest('.puzzle-item')) {
-    RESULT_STRING.append(event.target.closest('.puzzle-item'));
-  }
-});
+
+// PUZZLE_PAGE.addEventListener('click', (event) => {
+//   if (event.target.closest('.puzzle-item')) {
+//     CURRENT_STRING.append(event.target.closest('.puzzle-item'));
+//   }
+// });
 
 // document.body.addEventListener('mousedown', (event) => {
 //   // console.log(event);

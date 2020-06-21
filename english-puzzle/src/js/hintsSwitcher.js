@@ -1,6 +1,6 @@
 import {
   BUTTONS_HINT, TRANSLATE_BUTTON, AUDIO_BUTTON, TEXT_TRANSLATE, AUDIO_TAG, PLAY_AUDIO_BUTTON,
-  REFRESH_BUTTON,
+  REFRESH_BUTTON, PICTURE_BUTTON, PUZZLE_PAGE,
 } from './variables.js';
 
 BUTTONS_HINT.forEach((button) => {
@@ -15,6 +15,13 @@ BUTTONS_HINT.forEach((button) => {
     if (button.getAttribute('id') === 'audio-button') {
       button.classList.add('button-hint_active');
       AUDIO_TAG.setAttribute('autoplay', 'true');
+    }
+  }
+
+  if (localStorage.getItem('picture-button')) {
+    if (button.getAttribute('id') === 'picture-button') {
+      button.classList.add('button-hint_active');
+      PUZZLE_PAGE.classList.add('main-page__puzzle_opacity');
     }
   }
 
@@ -35,6 +42,10 @@ TRANSLATE_BUTTON.addEventListener('click', () => {
 
 AUDIO_BUTTON.addEventListener('click', () => {
   AUDIO_TAG.toggleAttribute('autoplay');
+});
+
+PICTURE_BUTTON.addEventListener('click', () => {
+  PUZZLE_PAGE.classList.toggle('main-page__puzzle_opacity');
 });
 
 PLAY_AUDIO_BUTTON.addEventListener('click', () => {

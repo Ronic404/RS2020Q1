@@ -1,14 +1,20 @@
 import {
-  PUZZLE_PAGE, RESULT_STRING, CHECK_BUTTON, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON,
+  PUZZLE_PAGE, CURRENT_STRING, CHECK_BUTTON, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, PICTURE_TITLE,
+  REFRESH_BUTTON,
 } from './variables.js';
 
 import renderTextTranslate from './renderTextTranslate.js';
 import audio from './audio.js';
 
+const ALL_CORRECT_PHRASES = [];
+const ALL_RANDOM_PHRASES = [];
+const ALL_TRANSLATE_PHRASES = [];
+const ALL_AUDIO_LINKS = [];
+
 let PHRASE_ARRAY = '';
 let PHRASE_RANDOM_ARRAY = '';
-const ALL_PHRASES_ON_THE_PAGE = [];
-let NUMBER_STRING = 9;
+let NUMBER_STRING = 0;
+let CONTINUE_COUNTER = 0;
 
 export default function renderPuzzle(data) {
   window.console.log(data);
@@ -28,66 +34,129 @@ export default function renderPuzzle(data) {
     UL.style.height = `${PUZZLE_PAGE.clientHeight / 10}px`;
     PUZZLE_PAGE.append(UL);
 
-    PHRASE_ARRAY = data[i].textExample.split(' ');
-    ALL_PHRASES_ON_THE_PAGE.push(data[i].textExample.split(' '));
-    PHRASE_RANDOM_ARRAY = PHRASE_ARRAY.sort(() => 0.5 - Math.random());
-
-    for (let j = 0; j < PHRASE_RANDOM_ARRAY.length; j += 1) {
-      const LI = document.createElement('li');
-      LI.className = 'puzzle-item';
-      LI.innerHTML = PHRASE_RANDOM_ARRAY[j];
-      LI.style.height = UL.style.height;
-      LI.style.width = `${PUZZLE_PAGE.clientWidth / PHRASE_RANDOM_ARRAY.length}px`;
-      UL.append(LI);
+    if (ALL_CORRECT_PHRASES.length > 9) {
+      ALL_CORRECT_PHRASES.length = 0;
     }
+
+    if (ALL_RANDOM_PHRASES.length > 9) {
+      ALL_RANDOM_PHRASES.length = 0;
+    }
+
+    if (ALL_TRANSLATE_PHRASES.length > 9) {
+      ALL_TRANSLATE_PHRASES.length = 0;
+    }
+
+    if (ALL_AUDIO_LINKS.length > 9) {
+      ALL_AUDIO_LINKS.length = 0;
+    }
+
+    PHRASE_ARRAY = data[i].textExample.split(' ');
+    ALL_CORRECT_PHRASES.push(data[i].textExample.split(' '));
+
+    PHRASE_RANDOM_ARRAY = PHRASE_ARRAY.sort(() => 0.5 - Math.random());
+    ALL_RANDOM_PHRASES.push(PHRASE_RANDOM_ARRAY);
+
+    ALL_TRANSLATE_PHRASES.push(data[i].textExampleTranslate);
+    ALL_AUDIO_LINKS.push(data[i].audioExample);
   }
+
+  renderCurrentString();
 }
 
+
+function renderCurrentString() {
+  for (let i = 0; i < ALL_RANDOM_PHRASES[NUMBER_STRING].length; i += 1) {
+    const LI = document.createElement('li');
+    LI.className = 'puzzle-item';
+    LI.innerHTML = ALL_RANDOM_PHRASES[NUMBER_STRING][i];
+    LI.style.height = `${PUZZLE_PAGE.clientHeight / 10}px`;
+    LI.style.width = `${PUZZLE_PAGE.clientWidth / ALL_RANDOM_PHRASES[NUMBER_STRING].length}px`;
+    CURRENT_STRING.append(LI);
+  }
+
+  renderTextTranslate(ALL_TRANSLATE_PHRASES[NUMBER_STRING]);
+  audio(ALL_AUDIO_LINKS[NUMBER_STRING]);
+}
+
+
+CURRENT_STRING.addEventListener('click', (event) => {
+  const ALL_UL = PUZZLE_PAGE.querySelectorAll('ul');
+
+  if (event.target.closest('.puzzle-item')) {
+    ALL_UL[NUMBER_STRING].append(event.target.closest('.puzzle-item'));
+  }
+
+  if (CURRENT_STRING.innerHTML === '') {
+    CHECK_BUTTON.classList.remove('hide');
+  }
+});
+
+
 CHECK_BUTTON.addEventListener('click', () => {
-  let result = '';
-  RESULT_STRING.querySelectorAll('.puzzle-item').forEach((el) => {
-    result += `${el.innerHTML} `;
+  const ARRAY_FOR_CHECK = [];
+  const ALL_LI_ON_PAGE = PUZZLE_PAGE.querySelectorAll(`ul:nth-child(${NUMBER_STRING + 1}) li`);
+
+  ALL_LI_ON_PAGE.forEach((li) => {
+    ARRAY_FOR_CHECK.push(li.innerHTML);
   });
 
-  if (result.trim() === ALL_PHRASES_ON_THE_PAGE[NUMBER_STRING].join(' ')) {
-    RESULT_STRING.style.outline = '3px solid green';
+  for (let i = 0; i < ARRAY_FOR_CHECK.length; i += 1) {
+    if (ARRAY_FOR_CHECK[i] === ALL_CORRECT_PHRASES[NUMBER_STRING][i]) {
+      ALL_LI_ON_PAGE[i].classList.add('puzzle-item_correct');
+    } else {
+      ALL_LI_ON_PAGE[i].classList.add('puzzle-item_wrong');
+    }
+  }
+
+  if (ARRAY_FOR_CHECK.join('') === ALL_CORRECT_PHRASES[NUMBER_STRING].join('')) {
     CONTINUE_BUTTON.classList.remove('hide');
     CHECK_BUTTON.classList.add('hide');
     DO_NOT_KNOW_BUTTON.classList.add('hide');
-  } else {
-    RESULT_STRING.style.outline = '3px solid red';
-    setTimeout(() => { RESULT_STRING.style.outline = 'none'; }, 3000);
   }
 });
+
 
 CONTINUE_BUTTON.addEventListener('click', () => {
-  NUMBER_STRING -= 1;
-  RESULT_STRING.innerHTML = '';
-  RESULT_STRING.style.outline = 'none';
+  CONTINUE_COUNTER += 1;
+  if (CONTINUE_COUNTER === 10) {
+    PUZZLE_PAGE.innerHTML = '';
+    CONTINUE_COUNTER = 0;
+    CONTINUE_BUTTON.classList.add('hide');
+    PICTURE_TITLE.classList.remove('hide');
+    CURRENT_STRING.innerHTML = 'Выбери другой уровень';
+    return;
+  }
+
+  NUMBER_STRING += 1;
+  CURRENT_STRING.innerHTML = '';
   CONTINUE_BUTTON.classList.add('hide');
-  CHECK_BUTTON.classList.remove('hide');
+  CHECK_BUTTON.classList.add('hide');
   DO_NOT_KNOW_BUTTON.classList.remove('hide');
 
-  renderTextTranslate();
-  audio();
+  renderCurrentString();
 });
 
+
 DO_NOT_KNOW_BUTTON.addEventListener('click', () => {
-  const LAST_PHRASE = PUZZLE_PAGE.lastChild;
-  const TEXT_NUMBER = LAST_PHRASE.className.split('-')[1];
-  const WORDS = JSON.parse(localStorage.getItem('Words'));
-  const RIGHT_TEXT_ARRAY = WORDS[TEXT_NUMBER].textExample.split(' ');
+  const ALL_UL = PUZZLE_PAGE.querySelectorAll('ul');
 
-  RESULT_STRING.innerHTML = '';
+  CURRENT_STRING.innerHTML = '';
+  ALL_UL[NUMBER_STRING].innerHTML = '';
 
-  for (let i = 0; i < RIGHT_TEXT_ARRAY.length; i += 1) {
+  CHECK_BUTTON.classList.remove('hide');
+  DO_NOT_KNOW_BUTTON.classList.add('hide');
+
+  for (let i = 0; i < ALL_CORRECT_PHRASES[NUMBER_STRING].length; i += 1) {
     const LI = document.createElement('li');
     LI.className = 'puzzle-item';
-    LI.innerHTML = RIGHT_TEXT_ARRAY[i];
-    LI.style.width = `${PUZZLE_PAGE.clientWidth / PHRASE_RANDOM_ARRAY.length}px`;
-    LI.style.height = LAST_PHRASE.style.height;
-
-    RESULT_STRING.append(LI);
-    LAST_PHRASE.remove();
+    LI.innerHTML = ALL_CORRECT_PHRASES[NUMBER_STRING][i];
+    LI.style.height = `${PUZZLE_PAGE.clientHeight / 10}px`;
+    LI.style.width = `${PUZZLE_PAGE.clientWidth / ALL_CORRECT_PHRASES[NUMBER_STRING].length}px`;
+    ALL_UL[NUMBER_STRING].append(LI);
   }
+});
+
+
+REFRESH_BUTTON.addEventListener('click', () => {
+  NUMBER_STRING = 0;
 });
