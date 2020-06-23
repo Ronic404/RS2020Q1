@@ -5,6 +5,8 @@
   position: relative;
   z-index: 5;
   overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .main-page__bar {
@@ -41,10 +43,22 @@
 
 .main-page__puzzle {
   height: 60%;
-  opacity: 1;
+  position: relative;
+  z-index: -10;
 
   &_opacity {
-    opacity: 1;
+    z-index: auto;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $page-bg;
+    z-index: -1;
   }
 }
 
@@ -65,6 +79,7 @@
   align-items: center;
   position: relative;
   background-color: rgba($color: #000000, $alpha: 0.2);
+  user-select: none;
   
   &_correct {
     border-color: $correct;
@@ -86,6 +101,14 @@
   //   background-color: #9c2727;
   //   z-index: 10;
   // }
+}
+
+.drag-el {
+  cursor: move;
+
+  &_over {
+    border-style: dashed;
+  }
 }
 
 select {
@@ -118,5 +141,9 @@ option {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+
+    p {
+      width: 100%;
+      text-align: center;
+    }
 }

@@ -5,6 +5,7 @@ import {
 
 import renderTextTranslate from './renderTextTranslate.js';
 import audio from './audio.js';
+import dragdrop from './gragdrop.js';
 
 const ALL_CORRECT_PHRASES = [];
 const ALL_RANDOM_PHRASES = [];
@@ -82,12 +83,16 @@ function renderCurrentString() {
 CURRENT_STRING.addEventListener('click', (event) => {
   const ALL_UL = PUZZLE_PAGE.querySelectorAll('ul');
 
-  if (event.target.closest('.puzzle-item')) {
+  if (event.target.classList.contains('puzzle-item')) {
+    event.target.classList.add('drag-el');
+    event.target.setAttribute('draggable', 'true');
+    ALL_UL[NUMBER_STRING].classList.add('drag-zone');
     ALL_UL[NUMBER_STRING].append(event.target.closest('.puzzle-item'));
   }
 
   if (CURRENT_STRING.innerHTML === '') {
     CHECK_BUTTON.classList.remove('hide');
+    dragdrop();
   }
 });
 
@@ -103,8 +108,10 @@ CHECK_BUTTON.addEventListener('click', () => {
   for (let i = 0; i < ARRAY_FOR_CHECK.length; i += 1) {
     if (ARRAY_FOR_CHECK[i] === ALL_CORRECT_PHRASES[NUMBER_STRING][i]) {
       ALL_LI_ON_PAGE[i].classList.add('puzzle-item_correct');
+      ALL_LI_ON_PAGE[i].classList.remove('puzzle-item_wrong');
     } else {
       ALL_LI_ON_PAGE[i].classList.add('puzzle-item_wrong');
+      ALL_LI_ON_PAGE[i].classList.remove('puzzle-item_correct');
     }
   }
 
@@ -120,10 +127,11 @@ CONTINUE_BUTTON.addEventListener('click', () => {
   CONTINUE_COUNTER += 1;
   if (CONTINUE_COUNTER === 10) {
     PUZZLE_PAGE.innerHTML = '';
+    PUZZLE_PAGE.classList.add('main-page__puzzle_opacity');
     CONTINUE_COUNTER = 0;
     CONTINUE_BUTTON.classList.add('hide');
     PICTURE_TITLE.classList.remove('hide');
-    CURRENT_STRING.innerHTML = 'Выбери другой уровень';
+    CURRENT_STRING.innerHTML = '<p>Выбери другой уровень</p>';
     return;
   }
 
@@ -132,6 +140,15 @@ CONTINUE_BUTTON.addEventListener('click', () => {
   CONTINUE_BUTTON.classList.add('hide');
   CHECK_BUTTON.classList.add('hide');
   DO_NOT_KNOW_BUTTON.classList.remove('hide');
+
+  PUZZLE_PAGE.querySelectorAll('.phrase').forEach((phrase) => {
+    phrase.classList.remove('drag-zone');
+  });
+
+  PUZZLE_PAGE.querySelectorAll('.drag-el').forEach((item) => {
+    item.classList.remove('drag-el');
+    item.removeAttribute('draggable');
+  });
 
   renderCurrentString();
 });
@@ -148,12 +165,16 @@ DO_NOT_KNOW_BUTTON.addEventListener('click', () => {
 
   for (let i = 0; i < ALL_CORRECT_PHRASES[NUMBER_STRING].length; i += 1) {
     const LI = document.createElement('li');
-    LI.className = 'puzzle-item';
+    LI.className = 'puzzle-item drag-el';
+    LI.setAttribute('draggable', 'true');
     LI.innerHTML = ALL_CORRECT_PHRASES[NUMBER_STRING][i];
     LI.style.height = `${PUZZLE_PAGE.clientHeight / 10}px`;
     LI.style.width = `${PUZZLE_PAGE.clientWidth / ALL_CORRECT_PHRASES[NUMBER_STRING].length}px`;
+    ALL_UL[NUMBER_STRING].classList.add('drag-zone');
     ALL_UL[NUMBER_STRING].append(LI);
   }
+
+  dragdrop();
 });
 
 

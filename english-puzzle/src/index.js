@@ -2,7 +2,6 @@ import './sass/main.scss';
 
 import './js/createUser.js';
 import './js/loginUser.js';
-import './js/gragdrop.js';
 import './js/audio.js';
 import './js/hintsSwitcher.js';
 

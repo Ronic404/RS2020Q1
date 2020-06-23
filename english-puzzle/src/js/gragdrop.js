@@ -1,48 +1,70 @@
-import { PUZZLE_PAGE, CURRENT_STRING } from './variables.js';
+export default function dragdrop() {
+  const ALL_DRAG_EL = document.querySelectorAll('.drag-el');
+  let DRAG_SRC_EL = null;
+
+  function handleDragStart(e) {
+    this.style.opacity = '0.4';
+
+    DRAG_SRC_EL = this;
+
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+  }
 
 
-// PUZZLE_PAGE.addEventListener('click', (event) => {
-//   if (event.target.closest('.puzzle-item')) {
-//     CURRENT_STRING.append(event.target.closest('.puzzle-item'));
-//   }
-// });
+  function handleDragOver(e) {
+    if (e.preventDefault) {
+      e.preventDefault();
+    }
 
-// document.body.addEventListener('mousedown', (event) => {
-//   // console.log(event);
-//   const element = event.target;
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+  }
 
-//   if (element.classList.contains('puzzle-item')) {
-//     element.style.position = 'absolute';
-//     element.style.zIndex = 1000;
-//     document.body.append(element);
 
-//     moveAt(event.pageX, event.pageY);
-//     element.addEventListener('mousemove', onMouseMove);
-//   }
+  function handleDragEnter() {
+    if (this.classList.contains('.drag-el')) {
+      this.classList.add('drag-el_over');
+    }
+  }
 
-//   function moveAt(pageX, pageY) {
-//     element.style.left = `${pageX - element.clientWidth / 2}px`;
-//     element.style.top = `${pageY - element.clientHeight / 2}px`;
-//   }
 
-//   function onMouseMove(cursor) {
-//     moveAt(cursor.pageX, cursor.pageY);
+  function handleDragLeave() {
+    this.classList.remove('drag-el_over');
+  }
 
-//     element.hidden = true;
-//     const elementBelow = document.elementFromPoint(event.clientX, event.clientY);
-//     // element.hidden = false;
 
-//     // if(elementBelow.classList.contains('.result-string')) {
-//     //   console.log('asdasdasdsfsfs');
-//     // }
+  function handleDrop(e) {
+    if (e.stopPropagation) {
+      e.stopPropagation();
+    }
 
-//     console.log(elementBelow);
+    if (DRAG_SRC_EL !== this) {
+      DRAG_SRC_EL.innerHTML = this.innerHTML;
+      this.innerHTML = e.dataTransfer.getData('text/html');
+    }
 
-//     // const droppableBelow = elementBelow.closest('.result-string');
-//     // console.log(elementBelow, droppableBelow);
-//   }
+    return false;
+  }
 
-//   element.addEventListener('mouseup', () => {
-//     element.removeEventListener('mousemove', onMouseMove);
-//   });
-// });
+
+  function handleDragEnd() {
+    this.style.opacity = '1';
+
+    [].forEach.call(ALL_DRAG_EL, (el) => {
+      el.classList.remove('drag-el_over');
+    });
+  }
+
+
+  [].forEach.call(ALL_DRAG_EL, (el) => {
+    el.addEventListener('dragstart', handleDragStart, false);
+    el.addEventListener('dragenter', handleDragEnter, false);
+    el.addEventListener('dragover', handleDragOver, false);
+    el.addEventListener('dragleave', handleDragLeave, false);
+    el.addEventListener('drop', handleDrop, false);
+    el.addEventListener('dragend', handleDragEnd, false);
+  });
+
+  return false;
+}

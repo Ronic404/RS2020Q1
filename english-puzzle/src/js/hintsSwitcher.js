@@ -57,4 +57,8 @@ let rotate = 0;
 REFRESH_BUTTON.addEventListener('click', () => {
   rotate += 360;
   REFRESH_BUTTON.style.transform = `rotate(${rotate}deg)`;
+
+  if (!localStorage.getItem('picture-button')) {
+    PUZZLE_PAGE.classList.remove('main-page__puzzle_opacity');
+  }
 });
