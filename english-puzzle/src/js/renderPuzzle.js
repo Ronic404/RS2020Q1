@@ -61,6 +61,7 @@ export default function renderPuzzle(data) {
     ALL_AUDIO_LINKS.push(data[i].audioExample);
   }
 
+  DO_NOT_KNOW_BUTTON.classList.remove('hide');
   renderCurrentString();
 }
 
@@ -129,9 +130,9 @@ CONTINUE_BUTTON.addEventListener('click', () => {
     PUZZLE_PAGE.innerHTML = '';
     PUZZLE_PAGE.classList.add('main-page__puzzle_opacity');
     CONTINUE_COUNTER = 0;
+    NUMBER_STRING = 0;
     CONTINUE_BUTTON.classList.add('hide');
     PICTURE_TITLE.classList.remove('hide');
-    CURRENT_STRING.innerHTML = '<p>Выбери другой уровень</p>';
     return;
   }
 

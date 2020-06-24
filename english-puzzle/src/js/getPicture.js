@@ -1,5 +1,5 @@
 import {
-  PUZZLE_PAGE, PICTURE_TITLE,
+  PUZZLE_PAGE, RESULT_PICTURE, PICTURE_DESCRIPTION,
 } from './variables.js';
 
 import PICTURES_1 from './pictures-info/level1.js';
@@ -17,6 +17,10 @@ export default function getPicture() {
   PUZZLE_PAGE.style.background = `url(${PICTURE_LINK}/master/${getPathPicture()}`;
   PUZZLE_PAGE.style.backgroundSize = 'cover';
   PUZZLE_PAGE.style.backgroundPosition = 'center center';
+
+  RESULT_PICTURE.style.background = `url(${PICTURE_LINK}/master/${getPathPicture()}`;
+  RESULT_PICTURE.style.backgroundSize = 'cover';
+  RESULT_PICTURE.style.backgroundPosition = 'center center';
 }
 
 function getPathPicture() {
@@ -30,5 +34,5 @@ function getPathPicture() {
 }
 
 function setPictureTitle(data) {
-  PICTURE_TITLE.textContent = `${data.author} - ${data.name} (${data.year})`;
+  PICTURE_DESCRIPTION.textContent = `${data.author} - ${data.name} (${data.year})`;
 }

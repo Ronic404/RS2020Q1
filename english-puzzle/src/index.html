@@ -24,7 +24,7 @@
         Нажимайте на слова и собирайте фразы<br>
         Слова можно перетаскивать. Можете выбирать подсказки.
       </p>
-      <button type="button" class="start-screen__button button">Start</button>
+      <button type="button" class="start-screen__button button">Старт</button>
     </section>
 
 
@@ -151,6 +151,31 @@
         <button type="button" class="button footer__button hide" id="check-button">Проверка</button>
         <button type="button" class="button footer__button hide" id="continue-button">Продолжить</button>
       </footer>      
+    </section>
+
+    <section class="result-page hide">
+      <div class="result-page__picture"></div>
+      <div class="result-page__description"></div>
+      <div class="result-page__stat">
+        <div class="i-dont-know">
+          <div class="stat-title i-dont-know__title">
+            <p class="stat-title__text i-dont-know__title-text">Я не знаю</p>
+            <div class="stat-title__number" id="i-dont-know__number"></div>
+          </div>
+          <ul class="stat-list" id="i-dont-know-list"></ul>
+        </div>
+        <div class="i-know">
+          <div class="stat-title i-know__title">
+            <p class="stat-title__text i-know__title-text">Я знаю</p>
+            <div class="stat-title__number" id="i-know__number"></div>
+          </div>
+          <ul class="stat-list" id="i-know-list"></ul>
+        </div>
+      </div>
+      <div class="result-page__buttons">
+        <button type="button" class="button result__button" id="result-continue-button">Продолжить</button>
+        <button type="button" class="button result__button" id="result-stat-button">Статистика</button>
+      </div>
     </section>
   </main>
 </body>
