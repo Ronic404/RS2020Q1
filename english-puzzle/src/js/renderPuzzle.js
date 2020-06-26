@@ -128,7 +128,6 @@ CONTINUE_BUTTON.addEventListener('click', () => {
   CONTINUE_COUNTER += 1;
   if (CONTINUE_COUNTER === 10) {
     PUZZLE_PAGE.innerHTML = '';
-    PUZZLE_PAGE.classList.add('main-page__puzzle_opacity');
     CONTINUE_COUNTER = 0;
     NUMBER_STRING = 0;
     CONTINUE_BUTTON.classList.add('hide');

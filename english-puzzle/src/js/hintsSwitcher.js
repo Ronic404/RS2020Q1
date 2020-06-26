@@ -4,21 +4,21 @@ import {
 } from './variables.js';
 
 BUTTONS_HINT.forEach((button) => {
-  if (localStorage.getItem('translate-button')) {
+  if (localStorage.getItem('translate-button') === 'true') {
     if (button.getAttribute('id') === 'translate-button') {
       button.classList.add('button-hint_active');
       TEXT_TRANSLATE.classList.add('text-translate_active');
     }
   }
 
-  if (localStorage.getItem('audio-button')) {
+  if (localStorage.getItem('audio-button') === 'true') {
     if (button.getAttribute('id') === 'audio-button') {
       button.classList.add('button-hint_active');
       AUDIO_TAG.setAttribute('autoplay', 'true');
     }
   }
 
-  if (localStorage.getItem('picture-button')) {
+  if (localStorage.getItem('picture-button') === 'true') {
     if (button.getAttribute('id') === 'picture-button') {
       button.classList.add('button-hint_active');
       PUZZLE_PAGE.classList.add('main-page__puzzle_opacity');
@@ -29,7 +29,7 @@ BUTTONS_HINT.forEach((button) => {
     button.classList.toggle('button-hint_active');
 
     if (!button.classList.contains('button-hint_active')) {
-      localStorage.removeItem(button.getAttribute('id'), 'true');
+      localStorage.setItem(button.getAttribute('id'), 'false');
     } else {
       localStorage.setItem(button.getAttribute('id'), 'true');
     }

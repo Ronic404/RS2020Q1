@@ -34,9 +34,6 @@ CONTINUE_BUTTON.addEventListener('click', () => {
   if (ARRAY_I_DONT_KNOW.indexOf(ALL_UL[CONTINUE_COUNTER - 1].outerText.replace(/\n/ig, ' ')) < 0) {
     ARRAY_I_KNOW.push(ALL_UL[CONTINUE_COUNTER - 1].outerText.replace(/\n/ig, ' '));
   }
-
-  console.log(ARRAY_I_DONT_KNOW);
-  console.log(ARRAY_I_KNOW);
 });
 
 

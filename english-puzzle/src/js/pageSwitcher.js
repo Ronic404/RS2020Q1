@@ -4,6 +4,7 @@ import {
 } from './variables.js';
 
 import getWords from './getWords.js';
+import getBackendStat from './getBackendStat.js';
 
 export default function pageSwitcher() {
   SIGN_UP_BUTTON.addEventListener('click', () => {
@@ -40,7 +41,14 @@ export default function pageSwitcher() {
     LOGIN_PAGE.classList.add('hide');
     PUZZLE_PAGE.innerHTML = '';
 
-    if (!localStorage.getItem('player-level')) localStorage.setItem('player-level', '[1, 1]');
+    try {
+      getBackendStat();
+    } catch {
+      localStorage.setItem('player-level', '[1, 1]');
+      localStorage.setItem('picture-button', 'false');
+      localStorage.setItem('audio-button', 'false');
+      localStorage.setItem('translate-button', 'false');
+    }
 
     getWords(...localStorage.getItem('player-level'));
     [document.querySelector('#rounds').value, document.querySelector('#groups').value] = JSON.parse(localStorage.getItem('player-level'));

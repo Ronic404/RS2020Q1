@@ -21,7 +21,7 @@ AUTHORIZATION_BUTTON.addEventListener('click', (event) => {
 });
 
 
-async function loginUser(user) {
+export default async function loginUser(user) {
   const response = await fetch(`${RSSCHOOL_API_URL}signin`, {
     method: 'POST',
     headers: {
@@ -44,10 +44,11 @@ async function loginUser(user) {
     START_SCREEN.classList.remove('hide');
     LOGIN_PAGE.classList.add('hide');
 
-    window.console.log(data);
+    // window.console.log(data);
 
     localStorage.setItem('token', data.token);
     localStorage.setItem('userId', data.userId);
+    localStorage.setItem('userPass', JSON.stringify(user));
   } else {
     window.console.warn(response);
   }

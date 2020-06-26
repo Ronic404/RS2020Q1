@@ -5,6 +5,8 @@ import {
 
 import renderPuzzle from './renderPuzzle.js';
 import getPicture from './getPicture.js';
+import getBackendStat, { setBackendStat } from './getBackendStat.js';
+
 
 export default function getWords() {
   const SELECTED_ROUND = Math.ceil((JSON.parse(localStorage.getItem('player-level'))[0]) / 2) - 1;
@@ -17,6 +19,7 @@ export default function getWords() {
 
       renderPuzzle(data);
       getPicture();
+      getBackendStat();
     });
 }
 
@@ -34,4 +37,5 @@ REFRESH_BUTTON.addEventListener('click', () => {
   PICTURE_TITLE.classList.add('hide');
 
   getWords();
+  setBackendStat();
 });
