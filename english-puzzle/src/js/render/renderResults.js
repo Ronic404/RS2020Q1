@@ -1,7 +1,7 @@
 /* eslint-disable eqeqeq */
 import {
   PUZZLE_PAGE, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, RESULT_PAGE, RESULT_CONTINUE_BUTTON,
-  RESULT_STAT_BUTTON, STATISTICT_PAGE,
+  RESULT_STAT_BUTTON, STATISTICS_PAGE,
 } from '../variables.js';
 
 import getWords from '../getset/getWords.js';
@@ -44,7 +44,7 @@ CONTINUE_BUTTON.addEventListener('click', () => {
 
 RESULT_CONTINUE_BUTTON.addEventListener('click', () => {
   RESULT_PAGE.classList.add('hide');
-  STATISTICT_PAGE.classList.add('hide');
+  STATISTICS_PAGE.classList.add('hide');
 
   ARRAY_I_DONT_KNOW.length = 0;
   ARRAY_I_KNOW.length = 0;
@@ -53,7 +53,7 @@ RESULT_CONTINUE_BUTTON.addEventListener('click', () => {
 });
 
 RESULT_STAT_BUTTON.addEventListener('click', () => {
-  STATISTICT_PAGE.classList.toggle('hide');
+  STATISTICS_PAGE.classList.toggle('hide');
 });
 
 
