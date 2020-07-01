@@ -1,6 +1,6 @@
 /* eslint-disable eqeqeq */
 import {
-  PUZZLE_PAGE, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, RESULT_PAGE, RESULT_CONTINUE_BUTTON,
+  PUZZLE_PAGE, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, RESULT_CONTINUE_BUTTON,
   RESULT_STAT_BUTTON, STATISTICS_PAGE,
 } from '../variables.js';
 
@@ -9,6 +9,7 @@ import setBackendStat from '../getset/setBackendStat.js';
 import { setBackendSettings } from '../getset/getBackendSettings.js';
 
 export default function renderResults() {
+  const RESULT_PAGE = document.querySelector('.result-page');
   const DONT_KNOW_LIST = document.querySelector('#i-dont-know-list');
   const KNOW_LIST = document.querySelector('#i-know-list');
   const I_DONT_KNOW_NUMBER = document.querySelector('#i-dont-know__number');
