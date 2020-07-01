@@ -1,4 +1,5 @@
 import { RSSCHOOL_API_URL, START_SCREEN, LOGIN_PAGE } from './variables.js';
+import setDefaultSettings from './getset/setDefaultSettings.js';
 
 const REGISTRATION_EMAIL = document.querySelector('#registration-email');
 const REGISTRATION_EMAIL_ERROR = document.querySelector('#email-error');
@@ -55,6 +56,8 @@ async function createUser(user) {
     LOGIN_PAGE.classList.add('hide');
     REGISTRATION_EMAIL.value = '';
     REGISTRATION_PASSWORD.value = '';
+
+    setDefaultSettings();
 
     const data = await response.json();
     window.console.log(data);

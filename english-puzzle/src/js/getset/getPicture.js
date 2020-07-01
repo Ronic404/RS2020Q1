@@ -1,13 +1,13 @@
 import {
   PUZZLE_PAGE, RESULT_PICTURE, PICTURE_DESCRIPTION,
-} from './variables.js';
+} from '../variables.js';
 
-import PICTURES_1 from './pictures-info/level1.js';
-import PICTURES_2 from './pictures-info/level2.js';
-import PICTURES_3 from './pictures-info/level3.js';
-import PICTURES_4 from './pictures-info/level4.js';
-import PICTURES_5 from './pictures-info/level5.js';
-import PICTURES_6 from './pictures-info/level6.js';
+import PICTURES_1 from '../pictures-info/level1.js';
+import PICTURES_2 from '../pictures-info/level2.js';
+import PICTURES_3 from '../pictures-info/level3.js';
+import PICTURES_4 from '../pictures-info/level4.js';
+import PICTURES_5 from '../pictures-info/level5.js';
+import PICTURES_6 from '../pictures-info/level6.js';
 
 const ALL_ARRAYS_PICTURES = [PICTURES_1, PICTURES_2, PICTURES_3, PICTURES_4, PICTURES_5, PICTURES_6];
 

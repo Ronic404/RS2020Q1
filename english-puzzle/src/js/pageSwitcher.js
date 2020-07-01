@@ -3,8 +3,9 @@ import {
   START_BUTTON, SIGN_UP_BUTTON, LOG_IN_BUTTON, LOG_OUT_BUTTON, PUZZLE_PAGE,
 } from './variables.js';
 
-import getWords from './getWords.js';
-import getBackendStat from './getBackendStat.js';
+import getWords from './getset/getWords.js';
+import getBackendSettings from './getset/getBackendSettings.js';
+import setDefaultSettings from './getset/setDefaultSettings.js';
 
 export default function pageSwitcher() {
   SIGN_UP_BUTTON.addEventListener('click', () => {
@@ -42,12 +43,11 @@ export default function pageSwitcher() {
     PUZZLE_PAGE.innerHTML = '';
 
     try {
-      getBackendStat();
+      setDefaultSettings();
+      getBackendSettings();
+      console.log('try pageSwitcher');
     } catch {
-      localStorage.setItem('player-level', '[1, 1]');
-      localStorage.setItem('picture-button', 'false');
-      localStorage.setItem('audio-button', 'false');
-      localStorage.setItem('translate-button', 'false');
+      setDefaultSettings();
     }
 
     getWords(...localStorage.getItem('player-level'));

@@ -10,10 +10,6 @@ export default function showFirstPage() {
     START_SCREEN.classList.remove('hide');
 
     loginUser(JSON.parse(localStorage.getItem('userPass')));
-
-    // SIGN_UP_BUTTON.classList.add('hide');
-    // LOG_IN_BUTTON.classList.add('hide');
-    // LOG_OUT_BUTTON.classList.remove('hide');
   } else {
     LOGIN_PAGE.classList.remove('hide');
 

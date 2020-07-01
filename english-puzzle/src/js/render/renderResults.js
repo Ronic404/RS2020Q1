@@ -1,9 +1,12 @@
 /* eslint-disable eqeqeq */
 import {
   PUZZLE_PAGE, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, RESULT_PAGE, RESULT_CONTINUE_BUTTON,
-} from './variables.js';
+  RESULT_STAT_BUTTON, STATISTICT_PAGE,
+} from '../variables.js';
 
-import getWords from './getWords.js';
+import getWords from '../getset/getWords.js';
+import setBackendStat from '../getset/setBackendStat.js';
+import { setBackendSettings } from '../getset/getBackendSettings.js';
 
 const DONT_KNOW_LIST = document.querySelector('#i-dont-know-list');
 const KNOW_LIST = document.querySelector('#i-know-list');
@@ -29,20 +32,28 @@ CONTINUE_BUTTON.addEventListener('click', () => {
   if (CONTINUE_COUNTER === 10) {
     CONTINUE_COUNTER = 0;
     renderResults();
+    setBackendStat(ARRAY_I_KNOW.length, ARRAY_I_DONT_KNOW.length);
+    return;
   }
 
   if (ARRAY_I_DONT_KNOW.indexOf(ALL_UL[CONTINUE_COUNTER - 1].outerText.replace(/\n/ig, ' ')) < 0) {
-    ARRAY_I_KNOW.push(ALL_UL[CONTINUE_COUNTER - 1].outerText.replace(/\n/ig, ' '));
+    setTimeout(() => { ARRAY_I_KNOW.push(ALL_UL[CONTINUE_COUNTER - 1].outerText.replace(/\n/ig, ' ')); }, 0);
   }
 });
 
 
 RESULT_CONTINUE_BUTTON.addEventListener('click', () => {
   RESULT_PAGE.classList.add('hide');
+  STATISTICT_PAGE.classList.add('hide');
+
   ARRAY_I_DONT_KNOW.length = 0;
   ARRAY_I_KNOW.length = 0;
 
   setPlayerLevel();
+});
+
+RESULT_STAT_BUTTON.addEventListener('click', () => {
+  STATISTICT_PAGE.classList.toggle('hide');
 });
 
 
@@ -81,14 +92,14 @@ function setPlayerLevel() {
   let ROUND = JSON.parse(localStorage.getItem('player-level'))[0];
   let LEVEL = JSON.parse(localStorage.getItem('player-level'))[1];
 
-  if (ROUND == 60 && LEVEL == 6) {
+  const NUMBER_OF_ROUNDS = document.querySelectorAll('#rounds option').length;
+
+  if (ROUND == NUMBER_OF_ROUNDS && LEVEL == 6) {
     LEVEL = 1;
     ROUND = 1;
     document.querySelector('#groups').value = LEVEL;
     document.querySelector('#rounds').value = ROUND;
-  }
-
-  if (ROUND == 60) {
+  } else if (ROUND == NUMBER_OF_ROUNDS) {
     ROUND = 1;
     LEVEL = +LEVEL + 1;
     document.querySelector('#rounds').value = ROUND;
@@ -98,11 +109,7 @@ function setPlayerLevel() {
     document.querySelector('#rounds').value = ROUND;
   }
 
-  if (LEVEL == 6) {
-    LEVEL = 1;
-    document.querySelector('#groups').value = LEVEL;
-  }
-
   localStorage.setItem('player-level', JSON.stringify([ROUND, LEVEL]));
+  setBackendSettings();
   getWords();
 }

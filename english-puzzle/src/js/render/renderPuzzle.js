@@ -1,11 +1,11 @@
 import {
   PUZZLE_PAGE, CURRENT_STRING, CHECK_BUTTON, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, PICTURE_TITLE,
   REFRESH_BUTTON,
-} from './variables.js';
+} from '../variables.js';
 
 import renderTextTranslate from './renderTextTranslate.js';
-import audio from './audio.js';
-import dragdrop from './gragdrop.js';
+import audio from '../audio.js';
+import dragdrop from '../gragdrop.js';
 
 const ALL_CORRECT_PHRASES = [];
 const ALL_RANDOM_PHRASES = [];
