@@ -1,17 +1,14 @@
 /* eslint-disable import/no-cycle */
-import {
-  RSSCHOOL_API_URL, PUZZLE_PAGE, REFRESH_BUTTON, CURRENT_STRING, CONTINUE_BUTTON, CHECK_BUTTON,
-  DO_NOT_KNOW_BUTTON,
-} from '../variables.js';
-
+import RSSCHOOL_API_URL from '../variables.js';
 import renderPuzzle from '../render/renderPuzzle.js';
 import getPicture from './getPicture.js';
 import getBackendStat, { setBackendSettings } from './getBackendSettings.js';
 import renderRoundsHTML from '../render/renderRoundsHTML.js';
 
+const REFRESH_BUTTON = document.querySelector('#refresh-button');
+
 const NUMBER_OF_WORDS_IN_SENTENCE = 10;
 const NUMBER_OF_WORDS_IN_PAGE = 20;
-
 
 export default function getWords() {
   const SELECTED_ROUND = Math.ceil((JSON.parse(localStorage.getItem('player-level'))[0]) / 2) - 1;
@@ -42,10 +39,16 @@ export async function getTotalNumberOfWords() {
 }
 
 REFRESH_BUTTON.addEventListener('click', () => {
-  PUZZLE_PAGE.innerHTML = '';
+  const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
   const SELECTED_ROUND = document.querySelector('#rounds').value;
   const SELECTED_GROUP = document.querySelector('#groups').value;
   const PICTURE_TITLE = document.querySelector('.picture-title');
+  const CURRENT_STRING = document.querySelector('.current-string');
+  const CHECK_BUTTON = document.querySelector('#check-button');
+  const CONTINUE_BUTTON = document.querySelector('#continue-button');
+  const DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
+
+  PUZZLE_PAGE.innerHTML = '';
 
   localStorage.setItem('player-level', JSON.stringify([SELECTED_ROUND, SELECTED_GROUP]));
   CURRENT_STRING.innerHTML = '';

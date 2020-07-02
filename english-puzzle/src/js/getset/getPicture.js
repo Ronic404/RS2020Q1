@@ -1,5 +1,3 @@
-import { PUZZLE_PAGE } from '../variables.js';
-
 import PICTURES_1 from '../pictures-info/level1.js';
 import PICTURES_2 from '../pictures-info/level2.js';
 import PICTURES_3 from '../pictures-info/level3.js';
@@ -12,6 +10,7 @@ const ALL_ARRAYS_PICTURES = [PICTURES_1, PICTURES_2, PICTURES_3, PICTURES_4, PIC
 export default function getPicture() {
   const PICTURE_LINK = 'https://raw.githubusercontent.com/ronic404/rslang_data_paintings';
   const RESULT_PICTURE = document.querySelector('.result-page__picture');
+  const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
 
   PUZZLE_PAGE.style.background = `url(${PICTURE_LINK}/master/${getPathPicture()}`;
   PUZZLE_PAGE.style.backgroundSize = 'cover';

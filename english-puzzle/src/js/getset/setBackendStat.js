@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-prototype-builtins */
-import { RSSCHOOL_API_URL } from '../variables.js';
+import RSSCHOOL_API_URL from '../variables.js';
 import renderStatistics from '../render/renderStatistics.js';
 
 export default async function setBackendStat(right, wrong) {

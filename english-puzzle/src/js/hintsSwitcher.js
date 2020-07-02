@@ -1,8 +1,6 @@
-import {
-  REFRESH_BUTTON, PUZZLE_PAGE,
-} from './variables.js';
-
 export default function hintsSwitcher() {
+  const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
+  const REFRESH_BUTTON = document.querySelector('#refresh-button');
   const BUTTONS_HINT = document.querySelectorAll('.button-hint');
   const TRANSLATE_BUTTON = document.querySelector('#translate-button');
   const AUDIO_BUTTON = document.querySelector('#audio-button');

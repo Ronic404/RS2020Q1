@@ -1,11 +1,10 @@
-import { PUZZLE_PAGE } from './variables.js';
-
 import getWords from './getset/getWords.js';
 import getBackendSettings from './getset/getBackendSettings.js';
 import setDefaultSettings from './getset/setDefaultSettings.js';
 
 export default function pageSwitcher() {
   const MAIN_PAGE = document.querySelector('.main-page');
+  const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
   const START_SCREEN = document.querySelector('.start-screen');
   const START_BUTTON = document.querySelector('.start-screen__button');
 

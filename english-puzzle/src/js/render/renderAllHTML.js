@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>English puzzle</title>
-</head>
-<body>
-  <main class="wrapper">
+export default function renderAllHTML() {
+  const PUZZLE = document.createElement('div');
+  PUZZLE.id = 'puzzle';
+  PUZZLE.innerHTML = `<main class="wrapper">
     <section class="start-screen">
       <h1 class="start-screen__title">English puzzle</h1>
       <p class="start-screen__description">
@@ -106,6 +101,7 @@
         </table>
       </div>
     </section>
-  </main>
-</body>
-</html>
+  </main>`;
+
+  document.body.append(PUZZLE);
+}

@@ -1,4 +1,4 @@
-import { RSSCHOOL_API_URL } from '../variables.js';
+import RSSCHOOL_API_URL from '../variables.js';
 
 export default async function getBackendSettings() {
   const TOKEN = localStorage.getItem('token');

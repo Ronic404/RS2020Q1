@@ -1,10 +1,13 @@
-import {
-  PUZZLE_PAGE, CURRENT_STRING, CHECK_BUTTON, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, REFRESH_BUTTON,
-} from '../variables.js';
-
 import renderTextTranslate from './renderTextTranslate.js';
 import audio from '../audio.js';
 import dragdrop from '../gragdrop.js';
+
+const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
+const CURRENT_STRING = document.querySelector('.current-string');
+const REFRESH_BUTTON = document.querySelector('#refresh-button');
+const CHECK_BUTTON = document.querySelector('#check-button');
+const CONTINUE_BUTTON = document.querySelector('#continue-button');
+const DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
 
 const ALL_CORRECT_PHRASES = [];
 const ALL_RANDOM_PHRASES = [];
