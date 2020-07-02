@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import {
   RSSCHOOL_API_URL, PUZZLE_PAGE, REFRESH_BUTTON, CURRENT_STRING, CONTINUE_BUTTON, CHECK_BUTTON,
-  DO_NOT_KNOW_BUTTON, PICTURE_TITLE,
+  DO_NOT_KNOW_BUTTON,
 } from '../variables.js';
 
 import renderPuzzle from '../render/renderPuzzle.js';
@@ -45,6 +45,7 @@ REFRESH_BUTTON.addEventListener('click', () => {
   PUZZLE_PAGE.innerHTML = '';
   const SELECTED_ROUND = document.querySelector('#rounds').value;
   const SELECTED_GROUP = document.querySelector('#groups').value;
+  const PICTURE_TITLE = document.querySelector('.picture-title');
 
   localStorage.setItem('player-level', JSON.stringify([SELECTED_ROUND, SELECTED_GROUP]));
   CURRENT_STRING.innerHTML = '';

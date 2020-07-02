@@ -1,6 +1,5 @@
 import {
-  PUZZLE_PAGE, CURRENT_STRING, CHECK_BUTTON, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, PICTURE_TITLE,
-  REFRESH_BUTTON,
+  PUZZLE_PAGE, CURRENT_STRING, CHECK_BUTTON, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, REFRESH_BUTTON,
 } from '../variables.js';
 
 import renderTextTranslate from './renderTextTranslate.js';
@@ -125,6 +124,8 @@ CHECK_BUTTON.addEventListener('click', () => {
 
 
 CONTINUE_BUTTON.addEventListener('click', () => {
+  const PICTURE_TITLE = document.querySelector('.picture-title');
+
   CONTINUE_COUNTER += 1;
   if (CONTINUE_COUNTER === 10) {
     PUZZLE_PAGE.innerHTML = '';

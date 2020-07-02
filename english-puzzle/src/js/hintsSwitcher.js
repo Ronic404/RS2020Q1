@@ -1,5 +1,5 @@
 import {
-  TEXT_TRANSLATE, REFRESH_BUTTON, PUZZLE_PAGE,
+  REFRESH_BUTTON, PUZZLE_PAGE,
 } from './variables.js';
 
 export default function hintsSwitcher() {
@@ -8,6 +8,7 @@ export default function hintsSwitcher() {
   const AUDIO_BUTTON = document.querySelector('#audio-button');
   const PICTURE_BUTTON = document.querySelector('#picture-button');
   const AUDIO_TAG = document.querySelector('audio');
+  const TEXT_TRANSLATE = document.querySelector('.text-translate');
 
   BUTTONS_HINT.forEach((button) => {
     if (localStorage.getItem('translate-button') === 'true') {
