@@ -1,6 +1,4 @@
-import {
-  PUZZLE_PAGE, RESULT_PICTURE, PICTURE_DESCRIPTION,
-} from '../variables.js';
+import { PUZZLE_PAGE } from '../variables.js';
 
 import PICTURES_1 from '../pictures-info/level1.js';
 import PICTURES_2 from '../pictures-info/level2.js';
@@ -13,6 +11,7 @@ const ALL_ARRAYS_PICTURES = [PICTURES_1, PICTURES_2, PICTURES_3, PICTURES_4, PIC
 
 export default function getPicture() {
   const PICTURE_LINK = 'https://raw.githubusercontent.com/ronic404/rslang_data_paintings';
+  const RESULT_PICTURE = document.querySelector('.result-page__picture');
 
   PUZZLE_PAGE.style.background = `url(${PICTURE_LINK}/master/${getPathPicture()}`;
   PUZZLE_PAGE.style.backgroundSize = 'cover';
@@ -34,5 +33,7 @@ function getPathPicture() {
 }
 
 function setPictureTitle(data) {
+  const PICTURE_DESCRIPTION = document.querySelector('.result-page__description');
+
   PICTURE_DESCRIPTION.textContent = `${data.author} - ${data.name} (${data.year})`;
 }

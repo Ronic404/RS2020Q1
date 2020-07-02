@@ -1,7 +1,6 @@
 /* eslint-disable eqeqeq */
 import {
-  PUZZLE_PAGE, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON, RESULT_CONTINUE_BUTTON,
-  RESULT_STAT_BUTTON, STATISTICS_PAGE,
+  PUZZLE_PAGE, CONTINUE_BUTTON, DO_NOT_KNOW_BUTTON,
 } from '../variables.js';
 
 import getWords from '../getset/getWords.js';
@@ -10,10 +9,13 @@ import { setBackendSettings } from '../getset/getBackendSettings.js';
 
 export default function renderResults() {
   const RESULT_PAGE = document.querySelector('.result-page');
+  const RESULT_CONTINUE_BUTTON = document.querySelector('#result-continue-button');
+  const RESULT_STAT_BUTTON = document.querySelector('#result-stat-button');
   const DONT_KNOW_LIST = document.querySelector('#i-dont-know-list');
   const KNOW_LIST = document.querySelector('#i-know-list');
   const I_DONT_KNOW_NUMBER = document.querySelector('#i-dont-know__number');
   const I_KNOW_NUMBER = document.querySelector('#i-know__number');
+  const STATISTICS_PAGE = document.querySelector('.statistics');
   const ARRAY_I_KNOW = [];
   const ARRAY_I_DONT_KNOW = [];
   let CONTINUE_COUNTER = 0;

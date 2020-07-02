@@ -88,7 +88,7 @@ function getTime() {
   const DATE = new Date();
   const DAY = (DATE.getDate().toString().length === 1) ? `0${DATE.getDate()}` : DATE.getDate();
   const MONTH = ((DATE.getMonth() + 1).toString().length === 1) ? `0${DATE.getMonth() + 1}` : DATE.getMonth() + 1;
-  const TIME = `${DAY - 10}.${MONTH}.${DATE.getFullYear() - 1}`;
+  const TIME = `${DAY}.${MONTH}.${DATE.getFullYear() - 1}`;
   // Сделать правильный день и год
   return TIME;
 }
