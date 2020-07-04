@@ -2,10 +2,10 @@
 import RSSCHOOL_API_URL from '../variables.js';
 import renderPuzzle from '../render/renderPuzzle.js';
 import getPicture from './getPicture.js';
-import getBackendStat, { setBackendSettings } from './getBackendSettings.js';
+import getBackendStat from './getBackendSettings.js';
 import renderRoundsHTML from '../render/renderRoundsHTML.js';
 
-const REFRESH_BUTTON = document.querySelector('#refresh-button');
+// const REFRESH_BUTTON = document.querySelector('#refresh-button');
 
 const NUMBER_OF_WORDS_IN_SENTENCE = 10;
 const NUMBER_OF_WORDS_IN_PAGE = 20;
@@ -38,26 +38,26 @@ export async function getTotalNumberOfWords() {
     });
 }
 
-REFRESH_BUTTON.addEventListener('click', () => {
-  const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
-  const SELECTED_ROUND = document.querySelector('#rounds').value;
-  const SELECTED_GROUP = document.querySelector('#groups').value;
-  const PICTURE_TITLE = document.querySelector('.picture-title');
-  const CURRENT_STRING = document.querySelector('.current-string');
-  const CHECK_BUTTON = document.querySelector('#check-button');
-  const CONTINUE_BUTTON = document.querySelector('#continue-button');
-  const DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
+// REFRESH_BUTTON.addEventListener('click', () => {
+//   const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
+//   const SELECTED_ROUND = document.querySelector('#rounds').value;
+//   const SELECTED_GROUP = document.querySelector('#groups').value;
+//   const PICTURE_TITLE = document.querySelector('.picture-title');
+//   const CURRENT_STRING = document.querySelector('.current-string');
+//   const CHECK_BUTTON = document.querySelector('#check-button');
+//   const CONTINUE_BUTTON = document.querySelector('#continue-button');
+//   const DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
 
-  PUZZLE_PAGE.innerHTML = '';
+//   PUZZLE_PAGE.innerHTML = '';
 
-  localStorage.setItem('player-level', JSON.stringify([SELECTED_ROUND, SELECTED_GROUP]));
-  CURRENT_STRING.innerHTML = '';
+//   localStorage.setItem('player-level', JSON.stringify([SELECTED_ROUND, SELECTED_GROUP]));
+//   CURRENT_STRING.innerHTML = '';
 
-  CONTINUE_BUTTON.classList.add('hide');
-  CHECK_BUTTON.classList.add('hide');
-  DO_NOT_KNOW_BUTTON.classList.remove('hide');
-  PICTURE_TITLE.classList.add('hide');
+//   CONTINUE_BUTTON.classList.add('hide');
+//   CHECK_BUTTON.classList.add('hide');
+//   DO_NOT_KNOW_BUTTON.classList.remove('hide');
+//   PICTURE_TITLE.classList.add('hide');
 
-  getWords();
-  setBackendSettings();
-});
+//   getWords();
+//   setBackendSettings();
+// });

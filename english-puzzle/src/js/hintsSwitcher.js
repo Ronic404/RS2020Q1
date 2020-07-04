@@ -1,3 +1,6 @@
+import getWords from './getset/getWords.js';
+import { setBackendSettings } from './getset/getBackendSettings.js';
+
 export default function hintsSwitcher() {
   const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
   const REFRESH_BUTTON = document.querySelector('#refresh-button');
@@ -62,5 +65,29 @@ export default function hintsSwitcher() {
     if (!localStorage.getItem('picture-button')) {
       PUZZLE_PAGE.classList.remove('main-page__puzzle_opacity');
     }
+  });
+
+
+  REFRESH_BUTTON.addEventListener('click', () => {
+    const SELECTED_ROUND = document.querySelector('#rounds').value;
+    const SELECTED_GROUP = document.querySelector('#groups').value;
+    const PICTURE_TITLE = document.querySelector('.picture-title');
+    const CURRENT_STRING = document.querySelector('.current-string');
+    const CHECK_BUTTON = document.querySelector('#check-button');
+    const CONTINUE_BUTTON = document.querySelector('#continue-button');
+    const DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
+
+    PUZZLE_PAGE.innerHTML = '';
+
+    localStorage.setItem('player-level', JSON.stringify([SELECTED_ROUND, SELECTED_GROUP]));
+    CURRENT_STRING.innerHTML = '';
+
+    CONTINUE_BUTTON.classList.add('hide');
+    CHECK_BUTTON.classList.add('hide');
+    DO_NOT_KNOW_BUTTON.classList.remove('hide');
+    PICTURE_TITLE.classList.add('hide');
+
+    getWords();
+    setBackendSettings();
   });
 }
