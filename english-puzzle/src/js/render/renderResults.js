@@ -6,6 +6,7 @@ import { setBackendSettings } from '../getset/getBackendSettings.js';
 export default function renderResults() {
   const PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
   const RESULT_PAGE = document.querySelector('.result-page');
+  const REFRESH_BUTTON = document.querySelector('#refresh-button');
   const RESULT_CONTINUE_BUTTON = document.querySelector('#result-continue-button');
   const RESULT_STAT_BUTTON = document.querySelector('#result-stat-button');
   const CONTINUE_BUTTON = document.querySelector('#continue-button');
@@ -57,6 +58,12 @@ export default function renderResults() {
 
   RESULT_STAT_BUTTON.addEventListener('click', () => {
     STATISTICS_PAGE.classList.toggle('hide');
+  });
+
+  REFRESH_BUTTON.addEventListener('click', () => {
+    CONTINUE_COUNTER = 0;
+    ARRAY_I_KNOW.length = 0;
+    ARRAY_I_DONT_KNOW.length = 0;
   });
 
 

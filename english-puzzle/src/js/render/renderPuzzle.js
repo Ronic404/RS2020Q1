@@ -22,7 +22,6 @@ let CRUTCH_2 = 0;
 export default function renderPuzzle(data) {
   PUZZLE_PAGE = document.querySelector('.main-page__puzzle');
   DO_NOT_KNOW_BUTTON = document.querySelector('#donotknow-button');
-  window.console.log(data);
 
   const SELECTED_ROUND = document.querySelector('#rounds').value;
   let increase;
@@ -199,5 +198,6 @@ export function clickButtons() {
 
   REFRESH_BUTTON.addEventListener('click', () => {
     NUMBER_STRING = 0;
+    CONTINUE_COUNTER = 0;
   });
 }
