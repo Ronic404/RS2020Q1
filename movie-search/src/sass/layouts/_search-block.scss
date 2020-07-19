@@ -1,0 +1,50 @@
+.search-block {
+  height: 10vh;
+  display: flex;
+}
+
+form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+input[type='search'] {
+  padding-left: 10px;
+  margin-right: 10px;
+  flex-grow: 1;
+  height: 40px;
+  font-size: 2rem;
+  outline-color: $head-foot-bgc;
+  color: $head-foot-bgc;
+  &::-webkit-search-cancel-button {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+}
+
+button {
+  height: 40px;
+  padding: 0 10px;
+  font-size: 2rem;
+  background-color: #c30c0c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  &:active {
+    background-color: red;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    transform: translate(5px, 5px);
+    box-shadow: -5px -5px 5px 1px #ce5353;
+  }
+  @media screen and (max-width: 400px) {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+}

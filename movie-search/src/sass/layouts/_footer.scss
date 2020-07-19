@@ -1,0 +1,21 @@
+footer {
+  background-color: $head-foot-bgc;
+  height: 10vh;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.footer-github {
+  display: flex;
+}
+
+.footer-github__icon {
+  margin-right: 10px;
+}
